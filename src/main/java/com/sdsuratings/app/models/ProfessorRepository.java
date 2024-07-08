@@ -12,12 +12,7 @@ public class ProfessorRepository {
         this.professors = new ArrayList(Arrays.asList("Ben Shen", "Patricia Kraft", "Chong Kim"));
     }
 
-    public boolean exists(String name) {
-        return professors.stream()
-                .anyMatch(p -> p.contains(name));
-    }
-
-    public LinkedList getProfessors(String name) {
+    public LinkedList<String> getProfessors(String name) {
         LinkedList<String> matches = new LinkedList<>();
 
         for (String s : professors) {

@@ -1,27 +1,23 @@
-{% block index %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SDSU Ratings</title>
-    {% block css %}<link rel="stylesheet" href="index.css">{% endblock %}
+    {% block css %}<link rel="stylesheet" href="home.css">{% endblock %}
     <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
 </head>
 <body>
-    <div class="welcome-container">
-        <div class="welcome-message">
-            <h1>Welcome to SDSU Ratings</h1>
-            <h3>Search for professors below</h3>
-        </div>
+    <img src="/images/student_union.jpg" alt="student union" id="background">
 
-        <form hx-get="/results" hx-target="body">
+    <nav>
+        <form hx-get="/search" hx-target="body">
             <input type="text" id="searchbar" name="professorName" placeholder="Search..." autocomplete="off">
             <button type="submit">Submit</button>
         </form>
-
-        <div hx-get="/test" hx-target="body">Click Me</div>
+    </nav>
+    <div class="main-container">
+        <h2>Search for a professor to see results...</h2>
     </div>
 </body>
 </html>
-{% endblock %}

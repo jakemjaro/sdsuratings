@@ -1,5 +1,5 @@
 <div>
     {% for match in matches %}
-        <div>{{ match }}</div>
+    <div>{{ match }}</div>
     {% endfor %}
 </div>
