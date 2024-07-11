@@ -16,7 +16,7 @@ public class ProfessorRepository {
         LinkedList<String> matches = new LinkedList<>();
 
         for (String s : professors) {
-            if (s.contains(name)) {
+            if (s.toLowerCase().contains(name.toLowerCase())) {
                 matches.add(s);
             }
         }

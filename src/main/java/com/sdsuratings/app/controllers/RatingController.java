@@ -44,14 +44,14 @@ public class RatingController {
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    String loginPage() throws IOException {
-        return render(new StringWriter(), "login");
-    }
-
-    @GetMapping("/home")
-    @ResponseStatus(HttpStatus.OK)
     String home() throws IOException {
         return render(new StringWriter(), "home");
+    }
+
+    @GetMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    String loginPage() throws IOException {
+        return render(new StringWriter(), "login");
     }
 
     @GetMapping("/search")

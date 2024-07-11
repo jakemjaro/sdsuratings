@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -100;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(51,52,54,0.75);
+    z-index: -1;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 150px 1fr 150px;
+}
+
+.logo-container {
+    grid-column: 1 / 2;
+    height: 74px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.8rem;
+}
+
+.logo-container #logo {
+    width: 100%;
+    object-fit: contain;
+}
+
+#search-form {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 2.5rem;
+    border-radius: 0.8em;
+    overflow: hidden;
+    grid-column: 2 / 3;
+    width: 50%;
+    min-width: 500px;
+    max-width: 100%;
+    align-self: center;
+    margin: 0 auto;
+}
+
+#search_icon {
+    height: 1em;
+    padding: 0 0.5em 0 0.8em;
+    fill: #8b929f;
+}
+
+#search-input {
+    background-color: transparent;
+    color: #000;
+    outline: none;
+    width: 100%;
+    border: 0;
+    padding: 0.5em 1.5em 0.5em 0.5em;
+    font-size: 1em;
+}
+
+::placeholder {
+    color: #8b929f;
+}
+
+.main-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.welcome-message {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+h1 span {
+    color: #c3313c;
+}
+
+.welcome-message h2 {
+    font-size: 1.5rem;
+}
