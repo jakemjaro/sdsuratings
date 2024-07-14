@@ -6,6 +6,7 @@
     <title>SDSU Ratings</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <img src="/images/student_union.jpg" alt="student union" id="background">
@@ -25,7 +26,7 @@
     </nav>
     <div class="main-container">
         <div class="welcome-message">
-            <h1>Welcome to <span>SDSU</span>Ratings</h1>
+            <h1><span>SDSU</span>Ratings</h1>
             <h2>Enter your professor to get started</h2>
         </div>
     </div>
