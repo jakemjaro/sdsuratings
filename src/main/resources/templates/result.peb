@@ -1,5 +1,5 @@
 <div>
-    {% for match in matches %}
-    {% include "rating" %}
+    {% for professorName in matches %}
+    {% include "professor" %}
     {% endfor %}
 </div>
