@@ -38,6 +38,7 @@ body::before {
 nav {
     display: grid;
     grid-template-columns: 150px 1fr 150px;
+    height: 80px;
 }
 
 .logo-container {
@@ -47,6 +48,7 @@ nav {
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
+    align-self: center;
 }
 
 .logo-container #logo {
@@ -61,14 +63,13 @@ nav {
     justify-content: center;
     flex-direction: row;
     height: 2.5rem;
-    border-radius: 0.8em;
-    overflow: hidden;
+    border-radius: 0.8rem;
     grid-column: 2 / 3;
-    width: 50%;
-    min-width: 500px;
-    max-width: 100%;
+    width: 600px;
     align-self: center;
     margin: 0 auto;
+    position: relative;
+    overflow-y: visible;
 }
 
 #search-form button {
@@ -110,6 +111,7 @@ nav {
     flex-direction: column;
     align-items: center;
     color: #fff;
+    gap: 0.8rem;
 }
 
 .welcome-message {
@@ -194,9 +196,10 @@ h1 span {
     display: flex;
     color: #000;
     background-color: #fff;
+    height: max-content;
 }
 
-.professor-card:hover {
+.professor-scale:hover {
     scale: 1.02;
     transition: scale 0.2s ease-in-out;
     cursor: pointer;
@@ -221,4 +224,22 @@ h1 span {
 
 .professor-card-rating i {
     color: #ceaf01;
+}
+
+.search-dropdown {
+    position: absolute;
+    z-index: 100;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #fff;
+    width: 600px;
+    border-radius: 0.8rem;
+    height: fit-content;
+    max-height: 400px;
+}
+
+.professor-background:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
 }

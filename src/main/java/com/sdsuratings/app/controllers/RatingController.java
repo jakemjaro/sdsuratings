@@ -57,16 +57,34 @@ public class RatingController {
     @GetMapping("/search")
     @ResponseStatus(HttpStatus.OK)
     String results(Model model, @RequestParam("professorName") String professorName) throws IOException {
-        List<String> matches = professorRepository.getProfessors(professorName);
+        if (professorName.isBlank()) {
+            return "";
+        }
+
+        List<String> matches = professorRepository.getMatchingProfessors(professorName);
         model.addAttribute("matches", matches);
 
-        return render(new StringWriter(), "result", model.asMap());
+        return render(new StringWriter(), "searchResult", model.asMap());
     }
 
     @GetMapping("/test")
     @ResponseStatus(HttpStatus.OK)
     String test(Model model) throws IOException {
         return render(new StringWriter(), "professor", model.asMap());
+    }
+
+    @GetMapping("/searchSuggestion")
+    @ResponseStatus(HttpStatus.OK)
+    String searchSuggestion(Model model, @RequestParam("professorName") String professorName) throws IOException {
+        if (professorName.isBlank()) {
+            return "";
+        }
+
+        List<String> matches = professorRepository.getMatchingProfessors(professorName, 5);
+
+        model.addAttribute("matches", matches);
+
+        return render(new StringWriter(), "dropdown", model.asMap());
     }
 
 }

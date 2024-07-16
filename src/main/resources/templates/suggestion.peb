@@ -1,0 +1,3 @@
+{% extends "professor" %}
+{% block "hoverClass" %}professor-background{% endblock %}
+{% block "style" %}style="width: 100%; border: none; height: 80px;"{% endblock %}

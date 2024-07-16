@@ -1,10 +1,10 @@
-<div class="professor-card">
+<div class="professor-card {% block "hoverClass" %}professor-scale{% endblock %}" {% block "style" %}{% endblock %}>
     <div class="professor-card-title">
         <h2 class="professor-card-name">{{ professorName }}</h2>
         <div class="professor-card-dept"><strong>Department: </strong>Computer Science</div>
     </div>
     <div class="professor-card-info">
-        <div class=professor-card-rating><strong>Rating: &nbsp;</strong>4 <i class='bx bxs-star'></i></div>
+        <div class="professor-card-rating"><strong>Rating: &nbsp;</strong>4 <i class='bx bxs-star'></i></div>
         <div class="professor-card-difficulty"><strong>Difficulty: &nbsp;</strong>3</div>
     </div>
 </div>

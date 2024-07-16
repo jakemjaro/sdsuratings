@@ -1,5 +1,0 @@
-<div>
-    {% for professorName in matches %}
-    {% include "professor" %}
-    {% endfor %}
-</div>
