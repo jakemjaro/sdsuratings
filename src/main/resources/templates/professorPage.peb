@@ -1,0 +1,18 @@
+<div class="professor-page-container">
+    <div class="professor-page-left">
+        <div class="professor-nameplate">
+            <h2>Professor Name</h2>
+            <div class="professor-nameplate-details">
+                <span class="professor-card-rating"><strong>Rating: &nbsp;</strong>4 <i class='bx bxs-star'></i></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="professor-card-difficulty"><strong>Difficulty: &nbsp;</strong>3</span>
+            </div>
+            <button class="add-rating-button">Add a rating</button>
+        </div>
+    </div>
+    <div class="professor-page-right">
+        {% for i in myList %}
+        {% include "rating" %}
+        {% endfor %}
+    </div>
+</div>

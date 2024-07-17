@@ -1,0 +1,3 @@
+{% extends "professorCard" %}
+{% block "class" %}search-suggestion{% endblock %}
+{% block "info" %}{% endblock %}

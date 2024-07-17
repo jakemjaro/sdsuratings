@@ -1,3 +1,3 @@
 {% for professorName in matches %}
-{% include "professor" %}
+{% include "professorCard" %}
 {% endfor %}

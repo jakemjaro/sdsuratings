@@ -87,4 +87,14 @@ public class RatingController {
         return render(new StringWriter(), "dropdown", model.asMap());
     }
 
+    @GetMapping("/professorPage")
+    @ResponseStatus(HttpStatus.OK)
+    String professorPage(Model model) throws IOException {
+        int[] myList = new int[10];
+
+        model.addAttribute("myList", myList);
+
+        return render(new StringWriter(), "professorPage", model.asMap());
+    }
+
 }
