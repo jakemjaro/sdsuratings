@@ -7,12 +7,15 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="professor-card-difficulty"><strong>Difficulty: &nbsp;</strong>3</span>
             </div>
-            <button class="add-rating-button">Add a rating</button>
+            <button type="button" class="add-rating-button">
+                Add a rating
+            </button>
+
         </div>
     </div>
     <div class="professor-page-right">
         {% for i in myList %}
-        {% include "rating" %}
+        {% include "ratingCard" %}
         {% endfor %}
     </div>
 </div>

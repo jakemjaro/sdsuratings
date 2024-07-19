@@ -3,7 +3,6 @@ package com.sdsuratings.app.controllers;
 import com.sdsuratings.app.models.ProfessorRepository;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
-import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,18 +10,16 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/rating")
-public class RatingController {
-
+@RequestMapping("/professor")
+public class ProfessorController {
     private final PebbleEngine pebbleEngine;
     private ProfessorRepository professorRepository;
 
-    public RatingController(PebbleEngine pebbleEngine, ProfessorRepository professorRepository) {
+    public ProfessorController(PebbleEngine pebbleEngine, ProfessorRepository professorRepository) {
         this.pebbleEngine = pebbleEngine;
         this.professorRepository = professorRepository;
     }
@@ -41,5 +38,15 @@ public class RatingController {
         writer.append('\n');
 
         return writer.toString();
+    }
+
+    @GetMapping("/profile")
+    @ResponseStatus(HttpStatus.OK)
+    String professorPage(Model model) throws IOException {
+        int[] myList = new int[10];
+
+        model.addAttribute("myList", myList);
+
+        return render(new StringWriter(), "professorPage", model.asMap());
     }
 }

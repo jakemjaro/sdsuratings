@@ -74,7 +74,6 @@ nav {
     align-self: center;
     margin: 0 auto;
     position: relative;
-    overflow-y: visible;
 }
 
 #search-form button {
@@ -149,15 +148,16 @@ h1 span {
     min-height: 200px;
     height: max-content;
     flex-grow: 0;
-    border: 3px solid #000;
-    border-radius: 1rem;
+    border: 4px solid #000;
+    border-radius: 0.75rem;
     display: flex;
     color: #000;
     background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .rating-card-left {
-    border-radius: 8px 0 0 8px;
+    border-radius: 0.75rem 0 0 0.75rem;
     min-width: 80px;
     width: 80px;
     display: flex;
@@ -165,7 +165,7 @@ h1 span {
     justify-content: center;
     align-items: center;
     gap: 0.2rem;
-    border-right: 3px solid #000;
+    border-right: 2px solid #000;
     font-size: 1.2rem;
     font-weight: 800;
 }
@@ -177,7 +177,7 @@ h1 span {
 
 .rating-card-right {
     flex-grow: 1;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 0.75rem 0.75rem 0;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -196,7 +196,7 @@ h1 span {
 }
 
 .professor-card, .search-suggestion {
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     padding: 0.8rem;
     display: flex;
     color: #000;
@@ -207,6 +207,7 @@ h1 span {
     width: 500px;
     height: max-content;
     border: 3px solid #c3313c;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .professor-card:hover {
@@ -255,7 +256,7 @@ h1 span {
     transform: translate(-50%);
     background-color: #fff;
     width: 600px;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     height: fit-content;
     max-height: 400px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
@@ -288,14 +289,13 @@ h1 span {
     color: #fff;
     background-color: #c3313c;
     border: 6px solid #000;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .professor-nameplate h2 {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     font-size: 2.5em;
 }
 
@@ -320,41 +320,29 @@ h1 span {
 }
 
 .add-rating-button {
-    padding: 15px 30px;
-    border: 2px solid #2c2c2c;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    font-size: 1.2rem;
+    color: white;
+    background-color: #222;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
     cursor: pointer;
-    border-radius: 30px;
-    transition: all 0.4s ease;
-    outline: none;
-    position: relative;
-    overflow: hidden;
-    font-weight: bold;
-}
-
-.add-rating-button::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0) 70%
-    );
-    transform: scale(0);
-    transition: transform 0.5s ease;
-}
-
-.add-rating-button:hover::after {
-    transform: scale(4);
+    text-align: center;
+    margin-right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    transition: transform 0.2s ease-out;
 }
 
 .add-rating-button:hover {
-    border-color: #666666;
-    background: #292929;
+    background-color: #333;
+}
+
+.add-rating-button:active {
+    transform: scale(0.98);
 }
