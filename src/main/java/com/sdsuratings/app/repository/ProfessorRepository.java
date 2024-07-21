@@ -1,4 +1,4 @@
-package com.sdsuratings.app.models;
+package com.sdsuratings.app.repository;
 
 import org.springframework.stereotype.Repository;
 
@@ -41,5 +41,9 @@ public class ProfessorRepository {
         }
 
         return matches;
+    }
+
+    public List<String> getAllProfessors() {
+        return professors;
     }
 }

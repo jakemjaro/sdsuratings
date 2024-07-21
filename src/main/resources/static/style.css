@@ -2,13 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    --main-red: #c3313c;
+}
 
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
 body {
@@ -18,6 +24,24 @@ body {
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
+    background-color: #ccc;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #888
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
 #background {
@@ -25,21 +49,22 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -100;
+    z-index: -2;
 }
 
-body::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: rgba(51,52,54,0.75);
-    z-index: -1;
-}
+/*body::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    inset: 0;*/
+/*    background-color: rgba(51,52,54,0.75);*/
+/*    z-index: -1;*/
+/*}*/
 
 nav {
     display: grid;
     grid-template-columns: 150px 1fr 150px;
     height: 80px;
+    min-height: 80px;
 }
 
 .logo-container {
@@ -62,7 +87,7 @@ nav {
 }
 
 #search-form {
-    background-color: #fff;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,7 +122,7 @@ nav {
 
 #search-input {
     background-color: transparent;
-    color: #000;
+    color: black;
     outline: none;
     width: 100%;
     border: 0;
@@ -109,12 +134,26 @@ nav {
     color: #8b929f;
 }
 
+.all-professors {
+    grid-column: 3 / 4;
+    width: fit-content;
+    align-self: center;
+    font-size: 1.15em;
+    border-bottom: 2px solid var(--main-red);
+    padding-top: 4px;
+}
+
+.all-professors:hover {
+    color: var(--main-red);
+    cursor: pointer;
+}
+
 .main-container {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #fff;
+    color: black;
     gap: 0.8rem;
     overflow-y: auto;
 }
@@ -134,7 +173,7 @@ h1 {
 }
 
 h1 span {
-    color: #c3313c;
+    color: var(--main-red);
 }
 
 .welcome-message h2 {
@@ -148,31 +187,26 @@ h1 span {
     min-height: 200px;
     height: max-content;
     flex-grow: 0;
-    border: 4px solid #000;
+    border: 3px solid black;
     border-radius: 0.75rem;
     display: flex;
-    color: #000;
-    background-color: #fff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
+    color: black;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
 }
 
 .rating-card-left {
-    border-radius: 0.75rem 0 0 0.75rem;
-    min-width: 80px;
     width: 80px;
+    min-width: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.2rem;
-    border-right: 2px solid #000;
-    font-size: 1.2rem;
+    border-right: 2px solid black;
+    font-size: 2rem;
     font-weight: 800;
-}
-
-.rating-card-left i {
-    color: #ceaf01;
-    font-size: 1.2em;
 }
 
 .rating-card-right {
@@ -199,15 +233,15 @@ h1 span {
     border-radius: 0.75rem;
     padding: 0.8rem;
     display: flex;
-    color: #000;
-    background-color: #fff;
+    color: black;
+    background-color: white;
 }
 
 .professor-card {
     width: 500px;
     height: max-content;
-    border: 3px solid #c3313c;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
+    border: 3px solid var(--main-red);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .professor-card:hover {
@@ -231,6 +265,7 @@ h1 span {
     gap: 0.1rem;
     width: max-content;
     min-height: 100%;
+    font-size: 1.15em;
 }
 
 .professor-card-rating i {
@@ -250,11 +285,10 @@ h1 span {
 
 .search-dropdown {
     position: absolute;
-    z-index: 100;
+    z-index: 1;
     top: 50px;
-    left: 50%;
-    transform: translate(-50%);
-    background-color: #fff;
+    left: 0;
+    background-color: white;
     width: 600px;
     border-radius: 0.75rem;
     height: fit-content;
@@ -270,10 +304,9 @@ h1 span {
 }
 
 .professor-page-left {
-    flex-grow: 1;
-    height: 80%;
-    min-height: 100%;
-    overflow: hidden;
+    height: 100%;
+    width: 40%;
+    min-width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -281,16 +314,17 @@ h1 span {
 
 .professor-nameplate {
     width: 400px;
-    height: 400px;
+    height: fit-content;
+    padding: 3rem 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    color: #fff;
-    background-color: #c3313c;
-    border: 6px solid #000;
+    color: black;
+    background-color: white;
+    border: 5px solid var(--main-red);
     border-radius: 1rem;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .professor-nameplate h2 {
@@ -299,12 +333,12 @@ h1 span {
     font-size: 2.5em;
 }
 
-.professor-nameplate .professor-nameplate-details {
+.professor-nameplate-details {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 1rem 0 2rem;
-    font-size: 1.2em;
+    font-size: 1.35em;
 }
 
 .professor-page-right {
@@ -316,12 +350,12 @@ h1 span {
     align-items: center;
     gap: 1rem;
     overflow-y: auto;
-    padding-bottom: 1rem;
+    padding: 1rem 0 2rem 0;
 }
 
 .add-rating-button {
     color: white;
-    background-color: #222;
+    background-color: black;
     font-weight: 500;
     border-radius: 0.5rem;
     font-size: 1.1rem;
@@ -340,9 +374,23 @@ h1 span {
 }
 
 .add-rating-button:hover {
+/*    background-color: #b3212c;*/
     background-color: #333;
 }
 
-.add-rating-button:active {
-    transform: scale(0.98);
+.rating-form-container {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51,52,54,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-form {
+    width: 30%;
+    height: 20%;
+    background-color: white;
 }

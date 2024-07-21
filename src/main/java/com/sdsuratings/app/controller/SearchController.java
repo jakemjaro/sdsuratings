@@ -1,6 +1,6 @@
-package com.sdsuratings.app.controllers;
+package com.sdsuratings.app.controller;
 
-import com.sdsuratings.app.models.ProfessorRepository;
+import com.sdsuratings.app.repository.ProfessorRepository;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import org.springframework.http.HttpStatus;

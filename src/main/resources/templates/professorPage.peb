@@ -1,13 +1,13 @@
 <div class="professor-page-container">
     <div class="professor-page-left">
         <div class="professor-nameplate">
-            <h2>Professor Name</h2>
+            <h2>Ben Shen</h2>
             <div class="professor-nameplate-details">
-                <span class="professor-card-rating"><strong>Rating: &nbsp;</strong>4 <i class='bx bxs-star'></i></span>
+                <span class="professor-nameplate-rating"><strong>Rating:</strong>&nbsp; 4.2 / 5</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="professor-card-difficulty"><strong>Difficulty: &nbsp;</strong>3</span>
+                <span class="professor-nameplate-difficulty"><strong>Difficulty:</strong>&nbsp; 3.0</span>
             </div>
-            <button type="button" class="add-rating-button">
+            <button type="button" class="add-rating-button" hx-get="/rating/form" hx-target="body" hx-swap="beforeend">
                 Add a rating
             </button>
 
@@ -16,6 +16,41 @@
     <div class="professor-page-right">
         {% for i in myList %}
         {% include "ratingCard" %}
+            <div class="rating-card">
+                <div class="rating-card-left" style="background-color: #f22e3b;">
+                    <div class="rating-card-value">2.0</div>
+                </div>
+                <div class="rating-card-right">
+                    <div class="rating-card-stats">
+                        <span><strong>Class: &nbsp;</strong>Math-150</span>
+                        <span><strong>Difficulty: &nbsp;</strong>Easy</span>
+                        <span><strong>Grade: &nbsp;</strong>A</span>
+                        <span><strong>Date: &nbsp;</strong>June 13, 2024</span>
+                    </div>
+                    <div class="rating-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea rem qui provident laborum unde? Distinctio, error est harum ratione porro sit cum beatae veritatis, quis in enim quibusdam sint dolores!</div>
+                </div>
+            </div>
+            <div class="rating-card">
+                <div class="rating-card-left" style="background-color: #e8e231;">
+                    <div class="rating-card-value">3.0</div>
+                    {#        <div class="rating-card-stars">#}
+                    {#            <i class='bx bxs-star'></i>#}
+                    {#            <i class='bx bxs-star'></i>#}
+                    {#            <i class='bx bxs-star'></i>#}
+                    {#            <i class='bx bxs-star'></i>#}
+                    {#            <i class='bx bxs-star'></i>#}
+                    {#        </div>#}
+                </div>
+                <div class="rating-card-right">
+                    <div class="rating-card-stats">
+                        <span><strong>Class: &nbsp;</strong>Math-150</span>
+                        <span><strong>Difficulty: &nbsp;</strong>Easy</span>
+                        <span><strong>Grade: &nbsp;</strong>A</span>
+                        <span><strong>Date: &nbsp;</strong>June 13, 2024</span>
+                    </div>
+                    <div class="rating-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea rem qui provident laborum unde? Distinctio, error est harum ratione porro sit cum beatae veritatis, quis in enim quibusdam sint dolores!</div>
+                </div>
+            </div>
         {% endfor %}
     </div>
 </div>

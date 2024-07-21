@@ -1,4 +1,4 @@
-package com.sdsuratings.app.controllers;
+package com.sdsuratings.app.controller;
 
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;

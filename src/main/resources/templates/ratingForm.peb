@@ -1,0 +1,7 @@
+<div class="rating-form-container">
+    <form class="rating-form">
+        <div class="rating-form-header">
+            Add a Rating
+        </div>
+    </form>
+</div>

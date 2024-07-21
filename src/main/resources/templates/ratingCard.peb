@@ -1,14 +1,13 @@
 <div class="rating-card">
-    <div class="rating-card-left">
-        <div class="rating-card-rating">4.1 / 5</div>
-        <div><i class='bx bxs-star'></i></div>
+    <div class="rating-card-left" style="background-color: #8eed68;">
+        <div class="rating-card-value">4.0</div>
     </div>
     <div class="rating-card-right">
         <div class="rating-card-stats">
-            <span><strong>Date: &nbsp;</strong>June 13, 2024</span>
             <span><strong>Class: &nbsp;</strong>Math-150</span>
-            <span><strong>Grade: &nbsp;</strong>A</span>
             <span><strong>Difficulty: &nbsp;</strong>Easy</span>
+            <span><strong>Grade: &nbsp;</strong>A</span>
+            <span><strong>Date: &nbsp;</strong>June 13, 2024</span>
         </div>
         <div class="rating-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea rem qui provident laborum unde? Distinctio, error est harum ratione porro sit cum beatae veritatis, quis in enim quibusdam sint dolores!</div>
     </div>
