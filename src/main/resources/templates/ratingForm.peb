@@ -1,7 +1,39 @@
 <div class="rating-form-container">
     <form class="rating-form">
-        <div class="rating-form-header">
-            Add a Rating
-        </div>
+        <h2>Add a Rating</h2>
+        <label for="quality">Quality</label>
+        <select name="quality-select" id="quality-select">
+            <option value="">1.0</option>
+            <option value="">2.0</option>
+            <option value="">3.0</option>
+            <option value="">4.0</option>
+            <option value="">5.0</option>
+        </select>
+
+        <label for="difficulty-select">Difficulty</label>
+        <select name="difficulty" id="difficulty-select">
+            <option value="">1.0</option>
+            <option value="">2.0</option>
+            <option value="">3.0</option>
+            <option value="">4.0</option>
+            <option value="">5.0</option>
+        </select>
+
+        <label for="course-select">Course</label>
+        <select name="course" id="course-select">
+            <option value="">CS-240</option>
+            <option value="">CS-370</option>
+            <option value="">CS-420</option>
+            <option value="">CS-470</option>
+        </select>
+
+        <label for="grade-select">Grade</label>
+        <select name="grade" id="grade-select">
+            <option value="">A</option>
+            <option value="">B</option>
+            <option value="">C</option>
+            <option value="">D</option>
+            <option value="">F</option>
+        </select>
     </form>
 </div>
