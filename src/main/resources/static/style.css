@@ -301,6 +301,7 @@ h1 span {
     width: 100%;
     height: 100%;
     min-height: 100%;
+    overflow: hidden;
 }
 
 .professor-page-left {
@@ -317,8 +318,8 @@ h1 span {
     height: fit-content;
     padding: 3rem 0;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     color: black;
     background-color: white;
@@ -331,6 +332,13 @@ h1 span {
     width: 100%;
     text-align: center;
     font-size: 2.5em;
+}
+
+.professor-nameplate .responsive-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .professor-nameplate-details {
@@ -360,13 +368,9 @@ h1 span {
     border-radius: 0.5rem;
     font-size: 1.1rem;
     line-height: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
+    padding: 0.7rem 2rem;
     cursor: pointer;
     text-align: center;
-    margin-right: 0.5rem;
     display: inline-flex;
     align-items: center;
     border: none;
@@ -404,4 +408,55 @@ h1 span {
 
 .rating-form label, .rating-form select {
     font-size: 1.1em;
+}
+
+
+@media screen and (max-width: 1100px) {
+    .professor-page-container {
+        overflow-y: auto;
+        flex-direction: column;
+    }
+
+    .professor-page-left {
+        width: 100%;
+        height: fit-content;
+        padding: 1rem 0;
+    }
+
+    .professor-nameplate {
+        min-width: 500px;
+        padding: 2rem 1rem;
+    }
+
+    .professor-page-right {
+        width: 100%;
+        overflow-y: visible;
+    }
+
+    .professor-nameplate {
+        flex-direction: row;
+    }
+
+    .professor-nameplate h2 {
+        flex-grow: 1;
+        text-align: left;
+        padding: 0 0.5rem;
+    }
+
+    .professor-nameplate .responsive-container {
+        min-width: 200px;
+        min-height: 100%;
+        gap: 1rem;
+    }
+
+    .professor-nameplate-details {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        gap: 0.25rem;
+    }
+
+    .professor-nameplate-difficulty, .professor-nameplate-rating {
+        margin: 0;
+    }
 }

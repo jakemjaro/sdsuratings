@@ -1,15 +1,16 @@
 <div class="professor-page-container">
     <div class="professor-page-left">
         <div class="professor-nameplate">
-            <h2>Ben Shen</h2>
-            <div class="professor-nameplate-details">
-                <span class="professor-nameplate-rating"><strong>Rating:</strong>&nbsp; 4.2 / 5</span>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="professor-nameplate-difficulty"><strong>Difficulty:</strong>&nbsp; 3.0</span>
+            <h2>Krishna Ramamoorthy</h2>
+            <div class="responsive-container">
+                <div class="professor-nameplate-details">
+                    <span class="professor-nameplate-rating"><strong>Rating:</strong>&nbsp; 4.2 / 5</span>
+                    <span class="professor-nameplate-difficulty"><strong>Difficulty:</strong>&nbsp; 3.0</span>
+                </div>
+                <button type="button" class="add-rating-button" hx-get="/rating/form" hx-target="body" hx-swap="beforeend">
+                    Add a rating
+                </button>
             </div>
-            <button type="button" class="add-rating-button" hx-get="/rating/form" hx-target="body" hx-swap="beforeend">
-                Add a rating
-            </button>
 
         </div>
     </div>
