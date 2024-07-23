@@ -12,7 +12,7 @@
 {#    <img src="/images/student_union.jpg" alt="student union" id="background">#}
     <nav>
         <div class="logo-container" hx-get="/" hx-trigger="click" hx-target="body">
-            <img src="images/sdsu_logo.png" alt="sdsu logo" id="logo">
+            <img src="images/sdsu_logo_black.png" alt="sdsu logo" id="logo">
         </div>
         <form id="search-form" hx-get="/search/results" hx-target=".main-container">
             <button type="submit">
