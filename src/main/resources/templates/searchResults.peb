@@ -1,3 +1,5 @@
+<div class="search-results-container">
 {% for professorName in matches %}
 {% include "professorCard" %}
 {% endfor %}
+</div>

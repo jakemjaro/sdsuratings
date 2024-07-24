@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
     --main-red: #c3313c;
@@ -94,7 +93,7 @@ nav {
     justify-content: center;
     flex-direction: row;
     height: 2.5rem;
-    border-radius: 0.8rem;
+/*    border-radius: 0.8rem;*/
     grid-column: 2 / 3;
     align-self: center;
     margin: 0 auto;
@@ -147,7 +146,7 @@ nav {
     border-bottom: 2px solid white;
 }
 
-.main-container {
+.main-container, .search-results-container, .professor-list-container {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -155,7 +154,12 @@ nav {
     color: black;
     gap: 0.8rem;
     overflow-y: auto;
-    padding-top: 1rem;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.search-results-container, .professor-list-container {
+    padding: 1rem 0;
 }
 
 .welcome-message {
@@ -181,57 +185,8 @@ h1 span {
     text-align: center;
 }
 
-.rating-card {
-    width: 90%;
-    min-width: 650px;
-    min-height: 200px;
-    height: max-content;
-    flex-grow: 0;
-    border: 3px solid black;
-    border-radius: 0.75rem;
-    display: flex;
-    color: black;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-}
-
-.rating-card-left {
-    width: 80px;
-    min-width: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.2rem;
-    border-right: 2px solid black;
-    font-size: 2rem;
-    font-weight: 800;
-}
-
-.rating-card-right {
-    flex-grow: 1;
-    border-radius: 0 0.75rem 0.75rem 0;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.rating-card-stats {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.rating-card-text {
-    width: 100%;
-    flex-grow: 1;
-    line-height: 1.4rem;
-}
-
 .professor-card, .search-suggestion {
-    border-radius: 0.75rem;
+/*    border-radius: 0.75rem;*/
     padding: 0.8rem;
     display: flex;
     color: black;
@@ -291,7 +246,7 @@ h1 span {
     left: 0;
     background-color: white;
     width: 100%;
-    border-radius: 0.75rem;
+/*    border-radius: 0.75rem;*/
     height: fit-content;
     max-height: 400px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
@@ -325,7 +280,7 @@ h1 span {
     color: black;
     background-color: white;
     border: 5px solid var(--main-red);
-    border-radius: 1rem;
+/*    border-radius: 1rem;*/
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
@@ -359,23 +314,11 @@ h1 span {
     gap: 0.25rem;
 }
 
-.professor-page-right {
-    width: 60%;
-    height: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    overflow-y: auto;
-    padding-bottom: 1rem 0 2rem 0;
-}
-
 .add-rating-button {
     color: white;
     background-color: var(--main-red);
     font-weight: 500;
-    border-radius: 0.5rem;
+/*    border-radius: 0.5rem;*/
     font-size: 1.1rem;
     line-height: 2rem;
     padding: 0.7rem 2rem;
@@ -389,7 +332,68 @@ h1 span {
 
 .add-rating-button:hover {
     background-color: #b3212c;
-/*    background-color: #333;*/
+}
+
+.professor-page-right {
+    width: 60%;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.3rem;
+    overflow-y: auto;
+    padding: 1.3rem 0;
+}
+
+.rating-card {
+    width: 90%;
+    min-width: 650px;
+    height: auto;
+    outline: 3px solid black;
+/*    border-radius: 0.75rem;*/
+    display: flex;
+    color: black;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.rating-card-left {
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    min-height: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid black;
+    font-size: 2rem;
+    font-weight: 800;
+/*    border-radius: 0.75rem 0 0 0.75rem;*/
+}
+
+.rating-card-right {
+    flex-grow: 1;
+    height: auto;
+/*    border-radius: 0 0.75rem 0.75rem 0;*/
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rating-card-stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating-card-text {
+    width: 100%;
+    height: auto;
+    line-height: 1.4rem;
 }
 
 .rating-form-container {

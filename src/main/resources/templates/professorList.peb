@@ -1,3 +1,5 @@
+<div class="professor-list-container">
 {% for professorName in allProfessors %}
 {% include "professorCard" %}
 {% endfor %}
+</div>
