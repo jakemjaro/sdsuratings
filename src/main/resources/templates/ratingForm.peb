@@ -1,39 +1,65 @@
 <div class="rating-form-container">
     <form class="rating-form">
-        <h2>Add a Rating</h2>
-        <label for="quality">Quality</label>
-        <select name="quality-select" id="quality-select">
-            <option value="">1.0</option>
-            <option value="">2.0</option>
-            <option value="">3.0</option>
-            <option value="">4.0</option>
-            <option value="">5.0</option>
-        </select>
+        <div class="rating-form-header">
+            <h2>Add a Rating</h2>
+        </div>
+        <div class="rating-form-dropdowns">
+            <div class="rating-form-selector">
+                <label for="quality-select">Quality:&nbsp;</label>
+                <select name="quality" id="quality-select" required>
+                    <option value="" selected disabled hidden>--</option>
+                    <option value="">1.0</option>
+                    <option value="">2.0</option>
+                    <option value="">3.0</option>
+                    <option value="">4.0</option>
+                    <option value="">5.0</option>
+                </select>
+            </div>
 
-        <label for="difficulty-select">Difficulty</label>
-        <select name="difficulty" id="difficulty-select">
-            <option value="">1.0</option>
-            <option value="">2.0</option>
-            <option value="">3.0</option>
-            <option value="">4.0</option>
-            <option value="">5.0</option>
-        </select>
+            <div class="rating-form-selector">
+                <label for="difficulty-select">Difficulty:&nbsp;</label>
+                <select name="difficulty" id="difficulty-select" required>
+                    <option value="" selected disabled hidden>--</option>
+                    <option value="">1.0</option>
+                    <option value="">2.0</option>
+                    <option value="">3.0</option>
+                    <option value="">4.0</option>
+                    <option value="">5.0</option>
+                </select>
+            </div>
 
-        <label for="course-select">Course</label>
-        <select name="course" id="course-select">
-            <option value="">CS-240</option>
-            <option value="">CS-370</option>
-            <option value="">CS-420</option>
-            <option value="">CS-470</option>
-        </select>
+            <div class="rating-form-selector">
+                <label for="course-select">Course:&nbsp;</label>
+                <select name="course" id="course-select" required>
+                    <option value="" selected disabled hidden>--</option>
+                    <option value="">CS</option>
+                    <option value="">COMPE</option>
+                    <option value="">PHYS</option>
+                    <option value="">MATH</option>
+                </select>
+                <span>&nbsp;-&nbsp;</span>
+                <input type="number" id="course-number" placeholder="XXX" pattern="^\d{3}$" inputmode="numeric" required>
+            </div>
 
-        <label for="grade-select">Grade</label>
-        <select name="grade" id="grade-select">
-            <option value="">A</option>
-            <option value="">B</option>
-            <option value="">C</option>
-            <option value="">D</option>
-            <option value="">F</option>
-        </select>
+            <div class="rating-form-selector">
+                <label for="grade-select">Grade:&nbsp;</label>
+                <select name="grade" id="grade-select" required>
+                    <option value="" selected disabled hidden>--</option>
+                    <option value="">A</option>
+                    <option value="">B</option>
+                    <option value="">C</option>
+                    <option value="">D</option>
+                    <option value="">F</option>
+                    <option value="">N/A</option>
+                </select>
+            </div>
+        </div>
+
+        <textarea name="description" class="rating-form-description"></textarea>
+
+        <div class="rating-form-buttons">
+            <button type="reset" class="rating-form-cancel">Cancel</button>
+            <button type="submit" class="rating-form-submit">Submit</button>
+        </div>
     </form>
 </div>
