@@ -2,6 +2,7 @@ package com.sdsuratings.app.controller;
 
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class HomeController {
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    String home() throws IOException {
+    String home(HttpServletRequest request) throws IOException {
         return render(new StringWriter(), "home");
     }
 }

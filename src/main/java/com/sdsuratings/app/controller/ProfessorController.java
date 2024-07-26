@@ -3,6 +3,7 @@ package com.sdsuratings.app.controller;
 import com.sdsuratings.app.repository.ProfessorRepository;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,18 +42,27 @@ public class ProfessorController {
 
     @GetMapping("/profile")
     @ResponseStatus(HttpStatus.OK)
-    String profile(Model model) throws IOException {
+    String profile(Model model, HttpServletRequest request) throws IOException {
         int[] myList = new int[10];
 
         model.addAttribute("myList", myList);
 
-        return render(new StringWriter(), "professorPage", model.asMap());
+        if (request.getHeader("HX-request") != null) {
+            return render(new StringWriter(), "professorPage", model.asMap());
+        } else {
+            return render(new StringWriter(), "fullProfessorPage", model.asMap());
+        }
     }
 
-    @GetMapping("/all")
+    @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
-    String all(Model model) throws IOException {
+    String all(Model model, HttpServletRequest request) throws IOException {
         model.addAttribute("allProfessors", professorRepository.getAllProfessors());
-        return render(new StringWriter(), "professorList", model.asMap());
+
+        if (request.getHeader("HX-request") != null) {
+            return render(new StringWriter(), "professorList", model.asMap());
+        } else {
+            return render(new StringWriter(), "fullProfessorList", model.asMap());
+        }
     }
 }

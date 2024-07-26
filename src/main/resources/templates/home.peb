@@ -4,36 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SDSU Ratings</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-{#    <img src="/images/student_union.jpg" alt="student union" id="background">#}
     <nav>
-        <div class="logo-container" hx-get="/" hx-trigger="click" hx-target="body">
-            <img src="images/sdsu_logo_black.png" alt="sdsu logo" id="logo">
+        <div class="logo-container" hx-get="/" hx-trigger="click" hx-target="body" hx-push-url="true">
+            <img src="/images/sdsu_logo_black.png" alt="sdsu_logo" id="logo">
         </div>
-        <form id="search-form" hx-get="/search/results" hx-target=".main-container">
+        <form id="search-form" hx-get="/search/results" hx-target=".main-container" hx-push-url="true">
             <button type="submit">
                 <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" alt="search icon">
                     <path d="M46.599 46.599a4.498 4.498 0 0 1-6.363 0l-7.941-7.941C29.028 40.749 25.167 42 21 42 9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21c0 4.167-1.251 8.028-3.342 11.295l7.941 7.941a4.498 4.498 0 0 1 0 6.363zM21 6C12.717 6 6 12.714 6 21s6.717 15 15 15c8.286 0 15-6.714 15-15S29.286 6 21 6z"></path>
                 </svg>
             </button>
             <input id="search-input" name="professorName" type="text" placeholder="Search For Professors" autocomplete="off"
-            hx-get="/search/suggestion" hx-trigger="input" hx-target=".search-dropdown">
+            hx-get="/search/suggestion" hx-trigger="input" hx-target=".search-dropdown" hx-push-url="false">
             <div class="search-dropdown"></div>
         </form>
-        <div class="all-professors" hx-get="/professor/all" hx-target=".main-container">Professor List</div>
+        <div class="all-professors" hx-get="/professor/list" hx-target=".main-container" hx-push-url="true">Professor List</div>
     </nav>
 
     <div class="main-container">
+    {% block "main" %}
         <div class="welcome-message">
             <h1><span>SDSU</span>Ratings</h1>
             <h2>Enter your professor to get started</h2>
         </div>
+    {% endblock %}
     </div>
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>

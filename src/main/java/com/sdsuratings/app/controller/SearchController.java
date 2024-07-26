@@ -3,6 +3,7 @@ package com.sdsuratings.app.controller;
 import com.sdsuratings.app.repository.ProfessorRepository;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +43,7 @@ public class SearchController {
 
     @GetMapping("/results")
     @ResponseStatus(HttpStatus.OK)
-    String searchResults(Model model, @RequestParam("professorName") String professorName) throws IOException {
+    String searchResults(Model model, HttpServletRequest request, @RequestParam("professorName") String professorName) throws IOException {
         if (professorName.isBlank()) {
             return "";
         }
@@ -50,7 +51,11 @@ public class SearchController {
         List<String> matches = professorRepository.getMatchingProfessors(professorName);
         model.addAttribute("matches", matches);
 
-        return render(new StringWriter(), "searchResults", model.asMap());
+        if (request.getHeader("HX-request") != null) {
+            return render(new StringWriter(), "searchResults", model.asMap());
+        } else {
+            return render(new StringWriter(), "fullSearchResults", model.asMap());
+        }
     }
 
     @GetMapping("/suggestion")

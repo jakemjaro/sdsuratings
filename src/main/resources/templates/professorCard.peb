@@ -1,4 +1,4 @@
-<div class="{% block "class" %}professor-card{% endblock %}" hx-get="/professor/profile" hx-target=".main-container">
+<div class="{% block "class" %}professor-card{% endblock %}" hx-get="/professor/profile" hx-target=".main-container" hx-push-url="true">
     <div class="professor-card-title">
         <h2 class="professor-card-name">{{ professorName }}</h2>
         <div class="professor-card-dept"><strong>Dept: </strong>CS</div>
