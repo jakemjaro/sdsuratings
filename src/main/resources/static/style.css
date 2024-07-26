@@ -517,8 +517,8 @@ h1 span {
     }
 
     .professor-nameplate {
-        min-width: 500px;
-        padding: 2rem 1rem;
+        width: 600px;
+        padding: 2rem;
     }
 
     .professor-page-right {

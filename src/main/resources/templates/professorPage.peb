@@ -2,8 +2,8 @@
     <div class="professor-page-left">
         <div class="professor-nameplate">
             <h2>Krishna Ramamoorthy</h2>
-            <div class="professor-nameplate-dept"><strong>Dept: </strong>CS</div>
             <div class="responsive-container">
+                <div class="professor-nameplate-dept"><strong>Dept: </strong>CS</div>
                 <div class="professor-nameplate-details">
                     <span class="professor-nameplate-rating"><strong>Rating:</strong>&nbsp; 4.00 / 5</span>
                     <span class="professor-nameplate-difficulty"><strong>Difficulty:</strong>&nbsp; 3.00 / 5</span>

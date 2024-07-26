@@ -29,7 +29,7 @@ public class HomeController {
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    String home(HttpServletRequest request) throws IOException {
+    String home() throws IOException {
         return render(new StringWriter(), "home");
     }
 }
