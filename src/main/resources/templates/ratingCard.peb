@@ -1,5 +1,5 @@
 <div class="rating-card">
-    <div class="rating-card-left" style="background-color: #8eed68;">
+    <div class="rating-card-left green-background">
         <div class="rating-card-value">4.0</div>
     </div>
     <div class="rating-card-right">

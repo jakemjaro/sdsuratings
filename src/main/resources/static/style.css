@@ -4,6 +4,9 @@
 
 :root {
     --main-red: #c3313c;
+    --rating-green: #8eed68;
+    --rating-yellow: #e8e231;
+    --rating-red: #f22e3b;
 }
 
 * {
@@ -294,7 +297,7 @@ h1 span {
 .professor-nameplate-dept {
     width: 100%;
     text-align: center;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     margin-top: 0.5rem;
 }
 
@@ -499,6 +502,18 @@ h1 span {
 .rating-form-submit:hover {
     cursor: pointer;
     background-color: #b3212c;
+}
+
+.green-background {
+    background-color: var(--rating-green);
+}
+
+.yellow-background {
+    background-color: var(--rating-yellow);
+}
+
+.red-background {
+    background-color: var(--rating-red);
 }
 
 

@@ -5,7 +5,7 @@
             <div class="responsive-container">
                 <div class="professor-nameplate-dept"><strong>Dept: </strong>CS</div>
                 <div class="professor-nameplate-details">
-                    <span class="professor-nameplate-rating"><strong>Rating:</strong>&nbsp; 4.00 / 5</span>
+                    <span class="professor-nameplate-rating"><strong>Quality:</strong>&nbsp; 4.00 / 5</span>
                     <span class="professor-nameplate-difficulty"><strong>Difficulty:</strong>&nbsp; 3.00 / 5</span>
                 </div>
                 <button type="button" class="add-rating-button" hx-get="/rating/form" hx-target="body" hx-swap="beforeend">
@@ -19,7 +19,7 @@
         {% for i in myList %}
         {% include "ratingCard" %}
             <div class="rating-card">
-                <div class="rating-card-left" style="background-color: #f22e3b;">
+                <div class="rating-card-left red-background">
                     <div class="rating-card-value">2.0</div>
                 </div>
                 <div class="rating-card-right">
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="rating-card">
-                <div class="rating-card-left" style="background-color: #e8e231;">
+                <div class="rating-card-left yellow-background">
                     <div class="rating-card-value">3.0</div>
                 </div>
                 <div class="rating-card-right">
