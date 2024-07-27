@@ -1,4 +1,7 @@
 package com.sdsuratings.app.repository;
 
-public class ProfessorRepositoryImpl {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ProfessorRepositoryImpl implements ProfessorRepository {
 }
