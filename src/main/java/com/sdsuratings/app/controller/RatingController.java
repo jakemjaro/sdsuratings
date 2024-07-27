@@ -1,6 +1,5 @@
 package com.sdsuratings.app.controller;
 
-import com.sdsuratings.app.repository.ProfessorRepository;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import org.springframework.http.HttpStatus;
@@ -16,11 +15,9 @@ import java.util.Map;
 public class RatingController {
 
     private final PebbleEngine pebbleEngine;
-    private ProfessorRepository professorRepository;
 
-    public RatingController(PebbleEngine pebbleEngine, ProfessorRepository professorRepository) {
+    public RatingController(PebbleEngine pebbleEngine) {
         this.pebbleEngine = pebbleEngine;
-        this.professorRepository = professorRepository;
     }
 
     private String render(Writer writer, String templateName, Map<String, Object> data) throws IOException {

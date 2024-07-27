@@ -1,6 +1,6 @@
 package com.sdsuratings.app.controller;
 
-import com.sdsuratings.app.repository.ProfessorRepository;
+import com.sdsuratings.app.repository.PracticeRepository;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,11 +18,11 @@ import java.util.Map;
 @RequestMapping("/search")
 public class SearchController {
     private final PebbleEngine pebbleEngine;
-    private ProfessorRepository professorRepository;
+    private PracticeRepository practiceRepository;
 
-    public SearchController(PebbleEngine pebbleEngine, ProfessorRepository professorRepository) {
+    public SearchController(PebbleEngine pebbleEngine, PracticeRepository practiceRepository) {
         this.pebbleEngine = pebbleEngine;
-        this.professorRepository = professorRepository;
+        this.practiceRepository = practiceRepository;
     }
 
     private String render(Writer writer, String templateName, Map<String, Object> data) throws IOException {
@@ -43,12 +43,12 @@ public class SearchController {
 
     @GetMapping("/results")
     @ResponseStatus(HttpStatus.OK)
-    String searchResults(Model model, HttpServletRequest request, @RequestParam("professorName") String professorName) throws IOException {
-        if (professorName.isBlank()) {
+    String searchResults(Model model, HttpServletRequest request, @RequestParam("query") String query) throws IOException {
+        if (query.isBlank()) {
             return "";
         }
 
-        List<String> matches = professorRepository.getMatchingProfessors(professorName);
+        List<String> matches = practiceRepository.getMatchingProfessors(query);
         model.addAttribute("matches", matches);
 
         if (request.getHeader("HX-request") != null) {
@@ -60,12 +60,12 @@ public class SearchController {
 
     @GetMapping("/suggestion")
     @ResponseStatus(HttpStatus.OK)
-    String searchSuggestion(Model model, @RequestParam("professorName") String professorName) throws IOException {
-        if (professorName.isBlank()) {
+    String searchSuggestion(Model model, @RequestParam("query") String query) throws IOException {
+        if (query.isBlank()) {
             return "";
         }
 
-        List<String> matches = professorRepository.getMatchingProfessors(professorName, 5);
+        List<String> matches = practiceRepository.getMatchingProfessors(query, 5);
 
         model.addAttribute("matches", matches);
 

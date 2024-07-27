@@ -1,4 +1,4 @@
 package com.sdsuratings.app.repository;
 
-public interface ProfessorRepository {
+public interface RatingRepository {
 }

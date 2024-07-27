@@ -1,6 +1,6 @@
 package com.sdsuratings.app.controller;
 
-import com.sdsuratings.app.repository.ProfessorRepository;
+import com.sdsuratings.app.repository.PracticeRepository;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,11 +17,11 @@ import java.util.Map;
 @RequestMapping("/professor")
 public class ProfessorController {
     private final PebbleEngine pebbleEngine;
-    private ProfessorRepository professorRepository;
+    private PracticeRepository practiceRepository;
 
-    public ProfessorController(PebbleEngine pebbleEngine, ProfessorRepository professorRepository) {
+    public ProfessorController(PebbleEngine pebbleEngine, PracticeRepository practiceRepository) {
         this.pebbleEngine = pebbleEngine;
-        this.professorRepository = professorRepository;
+        this.practiceRepository = practiceRepository;
     }
 
     private String render(Writer writer, String templateName, Map<String, Object> data) throws IOException {
@@ -57,7 +57,7 @@ public class ProfessorController {
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     String all(Model model, HttpServletRequest request) throws IOException {
-        model.addAttribute("allProfessors", professorRepository.getAllProfessors());
+        model.addAttribute("allProfessors", practiceRepository.getAllProfessors());
 
         if (request.getHeader("HX-request") != null) {
             return render(new StringWriter(), "professorList", model.asMap());

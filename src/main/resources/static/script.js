@@ -1,8 +1,8 @@
-function clearSearch() {
+function clearDropdown() {
     document.querySelector('.search-dropdown').innerHTML = '';
 }
 
-document.querySelector('#search-form').addEventListener('submit', clearSearch);
+document.querySelector('#search-form').addEventListener('submit', clearDropdown);
 //document.querySelector('#search-form').addEventListener('focusout', clearSeach);
 
 //const ratingFormContainer = document.querySelector('.rating-form-container');
