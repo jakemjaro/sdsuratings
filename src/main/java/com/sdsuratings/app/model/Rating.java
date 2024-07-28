@@ -1,13 +1,14 @@
 package com.sdsuratings.app.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Rating {
     private int id, professorId;
     private double quality, difficulty;
     private String course;
     private char grade;
-    private Date date;
+    private LocalDate date;
     private String description;
 
     public int getId() {
@@ -34,12 +35,27 @@ public class Rating {
         return grade;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return this.date;
+    }
+
+    public String getFormattedDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+        return this.date.format(formatter);
     }
 
     public String getDescription() {
         return description;
+    }
+
+    public String getBackgroundColor() {
+        if (this.quality <= 2) {
+            return BackgroundColors.RED.className;
+        } else if (this.quality == 3) {
+            return BackgroundColors.YELLOW.className;
+        } else {
+            return BackgroundColors.GREEN.className;
+        }
     }
 }
 
