@@ -26,7 +26,7 @@ public class RatingService {
         return null;
     }
 
-    public double getAverageRatingForProfessor(String name) {
+    public double getAverageQualityForProfessor(String name) {
         return 0.0;
     }
 
