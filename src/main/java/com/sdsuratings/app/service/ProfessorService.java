@@ -22,7 +22,7 @@ public class ProfessorService {
         return null;
     }
 
-    public Professor getProfessor(String name) {
+    public Professor getProfessor(int id) {
         return null;
     }
 
@@ -32,9 +32,5 @@ public class ProfessorService {
 
     public List<Professor> searchProfessors(String sequence) {
         return null;
-    }
-
-    public int getProfessorId(String name) {
-        return 0;
     }
 }

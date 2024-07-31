@@ -9,11 +9,9 @@ public interface ProfessorRepository {
 
     List<Professor> findAll();
 
-    Professor findByName(String name);
+    Professor findById(int id);
 
     List<Professor> findByNameContainsLimited(String sequence, int limit);
 
     List<Professor> findAllByNameContains(String sequence);
-
-    int findIdByName(String name);
 }

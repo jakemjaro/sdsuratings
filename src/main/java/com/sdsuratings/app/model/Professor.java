@@ -1,12 +1,14 @@
 package com.sdsuratings.app.model;
 
 public class Professor {
+    private static int running_id = 0;
+
     private int id;
     private String firstName, lastName;
     private String department;
 
-    public Professor(int id, String firstName, String lastName, String department) {
-        this.id = id;
+    public Professor(String firstName, String lastName, String department) {
+        this.id = running_id++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;

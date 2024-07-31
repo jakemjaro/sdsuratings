@@ -15,7 +15,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         return null;
     }
 
-    public Professor findByName(String name) {
+    public Professor findById(int id) {
         return null;
     }
 
@@ -25,9 +25,5 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     public List<Professor> findAllByNameContains(String sequence) {
         return null;
-    }
-
-    public int findIdByName(String name) {
-        return 0;
     }
 }

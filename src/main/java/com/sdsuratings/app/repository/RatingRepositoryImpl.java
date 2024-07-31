@@ -11,11 +11,11 @@ public class RatingRepositoryImpl implements RatingRepository {
         return;
     }
 
-    public List<Rating> findAllByProfessorName(String name) {
+    public List<Rating> findAllByProfessorId(int id) {
         return null;
     }
 
-    public List<Rating> findAllByCourseByProfessorName(String name, String course) {
+    public List<Rating> findAllByCourseByProfessorId(int id, String course) {
         return null;
     }
 }

@@ -18,19 +18,19 @@ public class RatingService {
         return;
     }
 
-    public List<Rating> getRatingsForProfessor(String name) {
+    public List<Rating> getRatingsForProfessor(int id) {
         return null;
     }
 
-    public List<Rating> getRatingsForProfessorCourse(String name, String course) {
+    public List<Rating> getRatingsForProfessorCourse(int id, String course) {
         return null;
     }
 
-    public double getAverageQualityForProfessor(String name) {
+    public double getAverageQualityForProfessor(int id) {
         return 0.0;
     }
 
-    public double getAverageDifficultyForProfessor(String name) {
+    public double getAverageDifficultyForProfessor(int id) {
         return 0.0;
     }
 }
