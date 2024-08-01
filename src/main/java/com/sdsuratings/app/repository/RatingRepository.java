@@ -7,7 +7,7 @@ import java.util.List;
 public interface RatingRepository {
     void create(Rating rating);
 
-    List<Rating> findAllByProfessorId(int id);
+    List<Rating> findAllByProfessorId(int professorId);
 
-    List<Rating> findAllByCourseByProfessorId(int id, String course);
+    List<Rating> findAllByCourseByProfessorId(int professorId, String course);
 }

@@ -1,6 +1,9 @@
 package com.sdsuratings.app.controller;
 
+import com.sdsuratings.app.model.Professor;
 import com.sdsuratings.app.repository.PracticeRepository;
+import com.sdsuratings.app.service.ProfessorService;
+import com.sdsuratings.app.service.RatingService;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,10 +22,14 @@ import java.util.Map;
 public class SearchController {
     private final PebbleEngine pebbleEngine;
     private PracticeRepository practiceRepository;
+    private ProfessorService professorService;
+    private RatingService ratingService;
 
-    public SearchController(PebbleEngine pebbleEngine, PracticeRepository practiceRepository) {
+    public SearchController(PebbleEngine pebbleEngine, PracticeRepository practiceRepository, ProfessorService professorService, RatingService ratingService) {
         this.pebbleEngine = pebbleEngine;
         this.practiceRepository = practiceRepository;
+        this.professorService = professorService;
+        this.ratingService = ratingService;
     }
 
     private String render(Writer writer, String templateName, Map<String, Object> data) throws IOException {
@@ -41,23 +48,6 @@ public class SearchController {
         return writer.toString();
     }
 
-    @GetMapping("/results")
-    @ResponseStatus(HttpStatus.OK)
-    String searchResults(Model model, HttpServletRequest request, @RequestParam("query") String query) throws IOException {
-        if (query.isBlank()) {
-            return "";
-        }
-
-        List<String> matches = practiceRepository.getMatchingProfessors(query);
-        model.addAttribute("matches", matches);
-
-        if (request.getHeader("HX-request") != null) {
-            return render(new StringWriter(), "searchResults", model.asMap());
-        } else {
-            return render(new StringWriter(), "fullSearchResults", model.asMap());
-        }
-    }
-
     @GetMapping("/suggestion")
     @ResponseStatus(HttpStatus.OK)
     String searchSuggestion(Model model, @RequestParam("query") String query) throws IOException {
@@ -65,10 +55,26 @@ public class SearchController {
             return "";
         }
 
-        List<String> matches = practiceRepository.getMatchingProfessors(query, 5);
-
+        List<Professor> matches = professorService.searchProfessorsLimited(query, 5);
         model.addAttribute("matches", matches);
 
         return render(new StringWriter(), "dropdown", model.asMap());
+    }
+
+    @GetMapping("/results")
+    @ResponseStatus(HttpStatus.OK)
+    String searchResults(Model model, HttpServletRequest request, @RequestParam("query") String query) throws IOException {
+        if (query.isBlank()) {
+            return "";
+        }
+
+        List<Professor> matches = professorService.searchProfessors(query);
+        model.addAttribute("matches", matches);
+
+        if (request.getHeader("HX-request") != null) {
+            return render(new StringWriter(), "searchResults", model.asMap());
+        } else {
+            return render(new StringWriter(), "fullSearchResults", model.asMap());
+        }
     }
 }

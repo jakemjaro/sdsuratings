@@ -1,9 +1,9 @@
 <div class="professor-page-container">
     <div class="professor-page-left">
         <div class="professor-nameplate">
-            <h2>Krishna Ramamoorthy</h2>
+            <h2>{{ professor.firstName }} {{ professor.lastName }}</h2>
             <div class="responsive-container">
-                <div class="professor-nameplate-dept"><strong>Dept: </strong>CS</div>
+                <div class="professor-nameplate-dept"><strong>Dept: </strong>{{ professor.department }}</div>
                 <div class="professor-nameplate-details">
                     <span class="professor-nameplate-rating"><strong>Quality:</strong>&nbsp; 4.00 / 5</span>
                     <span class="professor-nameplate-difficulty"><strong>Difficulty:</strong>&nbsp; 3.00 / 5</span>
@@ -16,36 +16,8 @@
         </div>
     </div>
     <div class="professor-page-right">
-        {% for i in myList %}
+        {% for rating in ratingList %}
         {% include "ratingCard" %}
-            <div class="rating-card">
-                <div class="rating-card-left red-background">
-                    <div class="rating-card-value">2.0</div>
-                </div>
-                <div class="rating-card-right">
-                    <div class="rating-card-stats">
-                        <span><strong>Class: &nbsp;</strong>Math-150</span>
-                        <span><strong>Difficulty: &nbsp;</strong>Easy</span>
-                        <span><strong>Grade: &nbsp;</strong>A</span>
-                        <span><strong>Date: &nbsp;</strong>June 13, 2024</span>
-                    </div>
-                    <div class="rating-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea rem qui provident laborum unde? Distinctio, error est harum ratione porro sit cum beatae veritatis, quis in enim quibusdam sint dolores!</div>
-                </div>
-            </div>
-            <div class="rating-card">
-                <div class="rating-card-left yellow-background">
-                    <div class="rating-card-value">3.0</div>
-                </div>
-                <div class="rating-card-right">
-                    <div class="rating-card-stats">
-                        <span><strong>Class: &nbsp;</strong>Math-150</span>
-                        <span><strong>Difficulty: &nbsp;</strong>Easy</span>
-                        <span><strong>Grade: &nbsp;</strong>A</span>
-                        <span><strong>Date: &nbsp;</strong>June 13, 2024</span>
-                    </div>
-                    <div class="rating-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea rem qui provident laborum unde? Distinctio, error est harum ratione porro sit cum beatae veritatis, quis in enim quibusdam sint dolores!</div>
-                </div>
-            </div>
         {% endfor %}
     </div>
 </div>

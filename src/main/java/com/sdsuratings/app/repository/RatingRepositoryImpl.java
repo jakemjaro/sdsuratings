@@ -14,15 +14,26 @@ public class RatingRepositoryImpl implements RatingRepository {
         this.jdbcClient = jdbcClient;
     }
 
+    @Override
     public void create(Rating rating) {
-        return;
+        jdbcClient.sql("INSERT INTO ratings (professor_id, quality, difficulty, course, grade, date_published, description) VALUES (?, ?, ?, ?, ?, ?, ?)")
+                .params(rating.getProfessorId(), rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDate(), rating.getDescription())
+                .update();
     }
 
-    public List<Rating> findAllByProfessorId(int id) {
-        return null;
+    @Override
+    public List<Rating> findAllByProfessorId(int professorId) {
+        return jdbcClient.sql("SELECT * FROM ratings WHERE professor_id = ?")
+                .param(professorId)
+                .query(Rating.class)
+                .list();
     }
 
-    public List<Rating> findAllByCourseByProfessorId(int id, String course) {
-        return null;
+    @Override
+    public List<Rating> findAllByCourseByProfessorId(int professorId, String course) {
+        return jdbcClient.sql("SELECT * FROM ratings WHERE (professor_id = ?) AND (course = ?)")
+                .params(professorId, course)
+                .query(Rating.class)
+                .list();
     }
 }

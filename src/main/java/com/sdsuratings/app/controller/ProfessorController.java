@@ -1,6 +1,7 @@
 package com.sdsuratings.app.controller;
 
-import com.sdsuratings.app.repository.PracticeRepository;
+import com.sdsuratings.app.service.ProfessorService;
+import com.sdsuratings.app.service.RatingService;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,11 +18,13 @@ import java.util.Map;
 @RequestMapping("/professor")
 public class ProfessorController {
     private final PebbleEngine pebbleEngine;
-    private PracticeRepository practiceRepository;
+    private ProfessorService professorService;
+    private RatingService ratingService;
 
-    public ProfessorController(PebbleEngine pebbleEngine, PracticeRepository practiceRepository) {
+    public ProfessorController(PebbleEngine pebbleEngine, ProfessorService professorService, RatingService ratingService) {
         this.pebbleEngine = pebbleEngine;
-        this.practiceRepository = practiceRepository;
+        this.professorService = professorService;
+        this.ratingService = ratingService;
     }
 
     private String render(Writer writer, String templateName, Map<String, Object> data) throws IOException {
@@ -40,12 +43,11 @@ public class ProfessorController {
         return writer.toString();
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/profile/{id}")
     @ResponseStatus(HttpStatus.OK)
-    String profile(Model model, HttpServletRequest request) throws IOException {
-        int[] myList = new int[10];
-
-        model.addAttribute("myList", myList);
+    String profile(Model model, @PathVariable("id") int id, HttpServletRequest request) throws IOException {
+        model.addAttribute("professor", professorService.getProfessor(id));
+        model.addAttribute("ratingList", ratingService.getRatingsForProfessor(id));
 
         if (request.getHeader("HX-request") != null) {
             return render(new StringWriter(), "professorPage", model.asMap());
@@ -57,7 +59,7 @@ public class ProfessorController {
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     String all(Model model, HttpServletRequest request) throws IOException {
-        model.addAttribute("allProfessors", practiceRepository.getAllProfessors());
+        model.addAttribute("allProfessors", professorService.getAllProfessors());
 
         if (request.getHeader("HX-request") != null) {
             return render(new StringWriter(), "professorList", model.asMap());

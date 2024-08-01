@@ -15,22 +15,22 @@ public class ProfessorService {
     }
 
     public void addProfessor(Professor professor) {
-        return;
+        professorRepository.create(professor);
     }
 
     public List<Professor> getAllProfessors() {
-        return null;
+        return professorRepository.findAll();
     }
 
     public Professor getProfessor(int id) {
-        return null;
+        return professorRepository.findById(id);
     }
 
     public List<Professor> searchProfessorsLimited(String sequence, int limit) {
-        return null;
+        return professorRepository.findByNameContainsLimited(sequence, limit);
     }
 
     public List<Professor> searchProfessors(String sequence) {
-        return null;
+        return professorRepository.findAllByNameContains(sequence);
     }
 }
