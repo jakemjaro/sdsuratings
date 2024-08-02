@@ -1,6 +1,7 @@
 package com.sdsuratings.app.repository;
 
 import com.sdsuratings.app.model.Professor;
+import com.sdsuratings.app.service.RatingService;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
@@ -9,9 +10,16 @@ import java.util.List;
 @Repository
 public class ProfessorRepositoryImpl implements ProfessorRepository {
     private JdbcClient jdbcClient;
+    private RatingService ratingService;
 
-    public ProfessorRepositoryImpl(JdbcClient jdbcClient) {
+    public ProfessorRepositoryImpl(JdbcClient jdbcClient, RatingService ratingService) {
         this.jdbcClient = jdbcClient;
+        this.ratingService = ratingService;
+    }
+
+    private void setAverages(Professor professor) {
+        professor.setAverageQuality(ratingService.getAverageQualityForProfessor(professor.getId()));
+        professor.setAverageDifficulty(ratingService.getAverageDifficultyForProfessor(professor.getId()));
     }
 
     @Override
@@ -23,17 +31,25 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     @Override
     public List<Professor> findAll() {
-        return jdbcClient.sql("SELECT * FROM professors")
+        List<Professor> professorList = jdbcClient.sql("SELECT * FROM professors")
                 .query(Professor.class)
                 .list();
+
+        professorList.forEach(professor -> setAverages(professor));
+
+        return professorList;
     }
 
     @Override
     public Professor findById(int id) {
-        return jdbcClient.sql("SELECT * FROM professors WHERE id = ?")
+        Professor professor = jdbcClient.sql("SELECT * FROM professors WHERE id = ?")
                 .param(id)
                 .query(Professor.class)
                 .single();
+
+        setAverages(professor);
+
+        return professor;
     }
 
     @Override
@@ -53,9 +69,13 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
             sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' LIMIT " + limit;
         }
 
-        return jdbcClient.sql(sqlQuery)
+        List<Professor> professorList = jdbcClient.sql(sqlQuery)
                 .query(Professor.class)
                 .list();
+
+        professorList.forEach(professor -> setAverages(professor));
+
+        return professorList;
     }
 
     @Override
@@ -75,8 +95,12 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
             sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%'";
         }
 
-        return jdbcClient.sql(sqlQuery)
+        List<Professor> professorList = jdbcClient.sql(sqlQuery)
                 .query(Professor.class)
                 .list();
+
+        professorList.forEach(professor -> setAverages(professor));
+
+        return professorList;
     }
 }

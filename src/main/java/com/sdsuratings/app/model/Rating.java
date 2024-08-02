@@ -4,61 +4,56 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Rating {
-    private static int running_id = 0;
+    private static int running_id = 1;
 
     private int id, professorId;
     private double quality, difficulty;
     private String course;
-    private char grade;
-    private LocalDate date;
+    private String grade;
+    private String datePublished;
     private String description;
 
-    public Rating(int professorId, double quality, double difficulty, String course, char grade, LocalDate date, String description) {
+    public Rating(int professorId, double quality, double difficulty, String course, String grade, LocalDate datePublished, String description) {
         this.id = running_id++;
         this.professorId = professorId;
         this.quality = quality;
         this.difficulty = difficulty;
         this.course = course;
         this.grade = grade;
-        this.date = date;
+        this.datePublished = datePublished.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
         this.description = description;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public int getProfessorId() {
-        return professorId;
+        return this.professorId;
     }
 
     public double getQuality() {
-        return quality;
+        return this.quality;
     }
 
     public double getDifficulty() {
-        return difficulty;
+        return this.difficulty;
     }
 
     public String getCourse() {
-        return course;
+        return this.course;
     }
 
-    public char getGrade() {
-        return grade;
+    public String getGrade() {
+        return this.grade;
     }
 
-    public LocalDate getDate() {
-        return this.date;
+    public String getDatePublished() {
+        return this.datePublished;
     }
 
     public String getDescription() {
-        return description;
-    }
-
-    public String getFormattedDate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
-        return this.date.format(formatter);
+        return this.description;
     }
 
     public String getBackgroundColor() {

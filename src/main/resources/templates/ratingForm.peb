@@ -1,5 +1,5 @@
 <div class="rating-form-container">
-    <form class="rating-form">
+    <form class="rating-form" hx-post="/rating/add/{{ professorId }}" hx-target=".main-container">
         <div class="rating-form-header">
             <h2>Add a Rating</h2>
         </div>
@@ -8,11 +8,11 @@
                 <label for="quality-select">Quality:&nbsp;</label>
                 <select name="quality" id="quality-select" required>
                     <option value="" selected disabled hidden>--</option>
-                    <option value="">1.0</option>
-                    <option value="">2.0</option>
-                    <option value="">3.0</option>
-                    <option value="">4.0</option>
-                    <option value="">5.0</option>
+                    <option value="1.0">1.0</option>
+                    <option value="2.0">2.0</option>
+                    <option value="3.0">3.0</option>
+                    <option value="4.0">4.0</option>
+                    <option value="5.0">5.0</option>
                 </select>
             </div>
 
@@ -20,11 +20,11 @@
                 <label for="difficulty-select">Difficulty:&nbsp;</label>
                 <select name="difficulty" id="difficulty-select" required>
                     <option value="" selected disabled hidden>--</option>
-                    <option value="">1.0</option>
-                    <option value="">2.0</option>
-                    <option value="">3.0</option>
-                    <option value="">4.0</option>
-                    <option value="">5.0</option>
+                    <option value="1.0">1.0</option>
+                    <option value="2.0">2.0</option>
+                    <option value="3.0">3.0</option>
+                    <option value="4.0">4.0</option>
+                    <option value="5.0">5.0</option>
                 </select>
             </div>
 
@@ -154,24 +154,24 @@
                     <option value="WMNST">WMNST</option>
                 </select>
                 <span>&nbsp;-&nbsp;</span>
-                <input type="number" id="course-number" placeholder="XXX" pattern="^\d{3}$" inputmode="numeric" required>
+                <input type="number" id="course-number" name="course-number" placeholder="XXX" pattern="^\d{3}$" inputmode="numeric" required>
             </div>
 
             <div class="rating-form-selector">
                 <label for="grade-select">Grade:&nbsp;</label>
                 <select name="grade" id="grade-select" required>
                     <option value="" selected disabled hidden>--</option>
-                    <option value="">A</option>
-                    <option value="">B</option>
-                    <option value="">C</option>
-                    <option value="">D</option>
-                    <option value="">F</option>
-                    <option value="">N/A</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                    <option value="N/A">N/A</option>
                 </select>
             </div>
         </div>
 
-        <textarea name="description" class="rating-form-description"></textarea>
+        <textarea name="description" class="rating-form-description" required></textarea>
 
         <div class="rating-form-buttons">
             <button type="reset" class="rating-form-cancel">Cancel</button>
