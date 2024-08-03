@@ -12,12 +12,17 @@
                     Add a rating
                 </button>
             </div>
-
         </div>
     </div>
+
     <div class="professor-page-right">
+    {% if ratingList is not empty %}
         {% for rating in ratingList %}
         {% include "ratingCard" %}
         {% endfor %}
+        <div class="hidden-cushion"></div>
+    {% else %}
+        {% include "noRatingsMessage" %}
+    {% endif %}
     </div>
 </div>
