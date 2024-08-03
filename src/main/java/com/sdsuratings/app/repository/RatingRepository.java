@@ -10,4 +10,8 @@ public interface RatingRepository {
     List<Rating> findAllByProfessorId(int professorId);
 
     List<Rating> findAllByCourseByProfessorId(int professorId, String course);
+
+    double getAverageQualityForProfessor(int professorId);
+
+    double getAverageDifficultyForProfessor(int professorId);
 }

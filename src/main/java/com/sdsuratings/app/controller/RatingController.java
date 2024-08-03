@@ -61,8 +61,9 @@ public class RatingController {
     String add(Model model, @PathVariable int professorId, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
                @RequestParam("course") String course, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade, @RequestParam("description") String description) throws IOException {
         String fullCourse = course + "-" + courseNumber;
+        String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
 
-        ratingService.addRating(new Rating(professorId, quality, difficulty, fullCourse, grade, LocalDate.now(), description));
+        ratingService.addRating(new Rating(professorId, quality, difficulty, fullCourse, grade, formattedDate, description));
 
         List<Rating> ratingsList = ratingService.getRatingsForProfessor(professorId);
         Professor professor = professorService.getProfessor(professorId);

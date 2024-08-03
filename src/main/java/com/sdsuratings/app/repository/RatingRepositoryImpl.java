@@ -4,7 +4,10 @@ import com.sdsuratings.app.model.Rating;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.OptionalDouble;
 
 @Repository
 public class RatingRepositoryImpl implements RatingRepository {
@@ -35,5 +38,25 @@ public class RatingRepositoryImpl implements RatingRepository {
                 .params(professorId, course)
                 .query(Rating.class)
                 .list();
+    }
+
+    @Override
+    public double getAverageQualityForProfessor(int professorId) {
+        List<Rating> allRatings = findAllByProfessorId(professorId);
+        OptionalDouble optionalDouble = allRatings.stream()
+                .mapToDouble(rating -> rating.getQuality())
+                .average();
+
+        return (optionalDouble.isPresent()) ? optionalDouble.getAsDouble() : 0.0;
+    }
+
+    @Override
+    public double getAverageDifficultyForProfessor(int professorId) {
+        List<Rating> allRatings = findAllByProfessorId(professorId);
+        OptionalDouble optionalDouble = allRatings.stream()
+                .mapToDouble(rating -> rating.getDifficulty())
+                .average();
+
+        return (optionalDouble.isPresent()) ? optionalDouble.getAsDouble() : 0.0;
     }
 }

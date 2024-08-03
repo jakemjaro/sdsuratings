@@ -13,14 +13,14 @@ public class Rating {
     private String datePublished;
     private String description;
 
-    public Rating(int professorId, double quality, double difficulty, String course, String grade, LocalDate datePublished, String description) {
+    public Rating(int professorId, double quality, double difficulty, String course, String grade, String datePublished, String description) {
         this.id = running_id++;
         this.professorId = professorId;
         this.quality = quality;
         this.difficulty = difficulty;
         this.course = course;
         this.grade = grade;
-        this.datePublished = datePublished.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
+        this.datePublished = datePublished;
         this.description = description;
     }
 

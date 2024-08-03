@@ -26,22 +26,4 @@ public class RatingService {
     public List<Rating> getRatingsForProfessorCourse(int professorId, String course) {
         return ratingRepository.findAllByCourseByProfessorId(professorId, course);
     }
-
-    public double getAverageQualityForProfessor(int professorId) {
-        List<Rating> allRatings = ratingRepository.findAllByProfessorId(professorId);
-        OptionalDouble optionalDouble = allRatings.stream()
-                .mapToDouble(rating -> rating.getQuality())
-                .average();
-
-        return (optionalDouble.isPresent()) ? optionalDouble.getAsDouble() : 0.0;
-    }
-
-    public double getAverageDifficultyForProfessor(int professorId) {
-        List<Rating> allRatings = ratingRepository.findAllByProfessorId(professorId);
-        OptionalDouble optionalDouble = allRatings.stream()
-                .mapToDouble(rating -> rating.getDifficulty())
-                .average();
-
-        return (optionalDouble.isPresent()) ? optionalDouble.getAsDouble() : 0.0;
-    }
 }

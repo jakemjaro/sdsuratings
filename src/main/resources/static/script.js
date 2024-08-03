@@ -11,3 +11,13 @@ document.querySelector('#search-form').addEventListener('submit', clearDropdown)
 //    ratingFormContainer.style.display = "hidden";
 //    ratingForm.style.display = "hidden";
 //});
+
+//function attachListeners() {
+//    document.querySelector('.rating-form').addEventListener('submit', () => {
+//        this.parentNode.remove();
+//    });
+//
+//    document.querySelector('rating-form').addEventListener('reset', () => {
+//        this.parentNode.remove();
+//    });
+//}

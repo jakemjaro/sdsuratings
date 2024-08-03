@@ -10,16 +10,16 @@ import java.util.List;
 @Repository
 public class ProfessorRepositoryImpl implements ProfessorRepository {
     private JdbcClient jdbcClient;
-    private RatingService ratingService;
+    private RatingRepository ratingRepository;
 
-    public ProfessorRepositoryImpl(JdbcClient jdbcClient, RatingService ratingService) {
+    public ProfessorRepositoryImpl(JdbcClient jdbcClient, RatingRepository ratingRepository) {
         this.jdbcClient = jdbcClient;
-        this.ratingService = ratingService;
+        this.ratingRepository = ratingRepository;
     }
 
     private void setAverages(Professor professor) {
-        professor.setAverageQuality(ratingService.getAverageQualityForProfessor(professor.getId()));
-        professor.setAverageDifficulty(ratingService.getAverageDifficultyForProfessor(professor.getId()));
+        professor.setAverageQuality(ratingRepository.getAverageQualityForProfessor(professor.getId()));
+        professor.setAverageDifficulty(ratingRepository.getAverageDifficultyForProfessor(professor.getId()));
     }
 
     @Override
