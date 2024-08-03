@@ -39,24 +39,4 @@ public class RatingRepositoryImpl implements RatingRepository {
                 .query(Rating.class)
                 .list();
     }
-
-    @Override
-    public double getAverageQualityForProfessor(int professorId) {
-        List<Rating> allRatings = findAllByProfessorId(professorId);
-        OptionalDouble optionalDouble = allRatings.stream()
-                .mapToDouble(rating -> rating.getQuality())
-                .average();
-
-        return (optionalDouble.isPresent()) ? optionalDouble.getAsDouble() : 0.0;
-    }
-
-    @Override
-    public double getAverageDifficultyForProfessor(int professorId) {
-        List<Rating> allRatings = findAllByProfessorId(professorId);
-        OptionalDouble optionalDouble = allRatings.stream()
-                .mapToDouble(rating -> rating.getDifficulty())
-                .average();
-
-        return (optionalDouble.isPresent()) ? optionalDouble.getAsDouble() : 0.0;
-    }
 }

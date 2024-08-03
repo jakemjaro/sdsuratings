@@ -3,7 +3,11 @@ function clearDropdown() {
 }
 
 document.querySelector('#search-form').addEventListener('submit', clearDropdown);
-//document.querySelector('#search-form').addEventListener('focusout', clearDropdown);
+document.querySelector('#search-form').addEventListener('focusout', clearDropdown);
+
+function removeRatingForm() {
+    document.querySelector('.rating-form-container').remove();
+}
 
 //const ratingFormContainer = document.querySelector('.rating-form-container');
 //const ratingForm = document.querySelector('.rating-form');

@@ -42,7 +42,7 @@ public class Professor {
     }
 
     public void setAverageQuality(double averageQuality) {
-        if (averageQuality > 0) {
+        if (averageQuality >= 0.0) {
             this.averageQuality = String.format("%.2f", averageQuality);
         }
     }
@@ -52,7 +52,7 @@ public class Professor {
     }
 
     public void setAverageDifficulty(double averageDifficulty) {
-        if (averageDifficulty > 0) {
+        if (averageDifficulty >= 0.0) {
             this.averageDifficulty = String.format("%.2f", averageDifficulty);
         }
     }

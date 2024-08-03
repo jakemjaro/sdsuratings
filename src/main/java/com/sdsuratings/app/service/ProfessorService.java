@@ -9,9 +9,16 @@ import java.util.List;
 @Service
 public class ProfessorService {
     private ProfessorRepository professorRepository;
+    private RatingService ratingService;
 
-    public ProfessorService(ProfessorRepository professorRepository) {
+    public ProfessorService(ProfessorRepository professorRepository, RatingService ratingService) {
         this.professorRepository = professorRepository;
+        this.ratingService = ratingService;
+    }
+
+    private void setAverages(Professor professor) {
+        professor.setAverageQuality(ratingService.getAverageQualityForProfessor(professor.getId()));
+        professor.setAverageDifficulty(ratingService.getAverageDifficultyForProfessor(professor.getId()));
     }
 
     public void addProfessor(Professor professor) {
@@ -19,18 +26,26 @@ public class ProfessorService {
     }
 
     public List<Professor> getAllProfessors() {
-        return professorRepository.findAll();
+        List<Professor> professorList = professorRepository.findAll();
+        professorList.forEach(professor -> setAverages(professor));
+        return professorList;
     }
 
     public Professor getProfessor(int id) {
-        return professorRepository.findById(id);
+        Professor professor = professorRepository.findById(id);
+        setAverages(professor);
+        return professor;
     }
 
     public List<Professor> searchProfessorsLimited(String sequence, int limit) {
-        return professorRepository.findByNameContainsLimited(sequence, limit);
+        List<Professor> professorList = professorRepository.findByNameContainsLimited(sequence, limit);
+        professorList.forEach(professor -> setAverages(professor));
+        return professorList;
     }
 
     public List<Professor> searchProfessors(String sequence) {
-        return professorRepository.findAllByNameContains(sequence);
+        List<Professor> professorList = professorRepository.findAllByNameContains(sequence);
+        professorList.forEach(professor -> setAverages(professor));
+        return professorList;
     }
 }
