@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -64,11 +65,11 @@ public class SearchController {
     @GetMapping("/results")
     @ResponseStatus(HttpStatus.OK)
     String searchResults(Model model, HttpServletRequest request, @RequestParam("query") String query) throws IOException {
-        if (query.isBlank()) {
-            return "";
+        List<Professor> matches = Collections.emptyList();
+        if (!query.isBlank()) {
+            matches = professorService.searchProfessors(query);
         }
 
-        List<Professor> matches = professorService.searchProfessors(query);
         model.addAttribute("matches", matches);
 
         if (request.getHeader("HX-request") != null) {

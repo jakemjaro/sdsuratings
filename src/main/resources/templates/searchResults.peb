@@ -1,5 +1,9 @@
 <div class="search-results-container">
-{% for professor in matches %}
-{% include "professorCard" %}
-{% endfor %}
+{% if matches is not empty %}
+    {% for professor in matches %}
+    {% include "professorCard" %}
+    {% endfor %}
+{% else %}
+    {% include "noProfessorsMessage" %}
+{% endif %}
 </div>

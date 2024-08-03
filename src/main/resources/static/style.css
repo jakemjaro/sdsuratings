@@ -528,8 +528,16 @@ h1 span {
     align-items: center;
 }
 
-.no-ratings-message div {
+.no-ratings-message div, no-professors-message div {
     font-size: 1.2rem;
+}
+
+.no-professors-message {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hidden-cushion {

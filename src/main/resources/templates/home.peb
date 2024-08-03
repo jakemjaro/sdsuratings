@@ -20,7 +20,7 @@
                 </svg>
             </button>
             <input id="search-input" name="query" type="text" placeholder="Search For Professors" autocomplete="off"
-            hx-get="/search/suggestion" hx-trigger="input" hx-target=".search-dropdown" hx-push-url="false">
+            hx-get="/search/suggestion" hx-trigger="input delay:400ms" hx-target=".search-dropdown" hx-push-url="false">
             <div class="search-dropdown"></div>
         </form>
         <div class="all-professors" hx-get="/professor/list" hx-target=".main-container" hx-push-url="true">Professor List</div>
