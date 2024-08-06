@@ -5,6 +5,8 @@ import com.sdsuratings.app.service.RatingService;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -75,6 +77,8 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         } else {
             sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%'";
         }
+
+        List<Professor> professorList = Collections.emptyList();
 
         return jdbcClient.sql(sqlQuery)
                 .query(Professor.class)

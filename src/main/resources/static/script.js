@@ -2,7 +2,9 @@ function clearDropdown() {
     document.querySelector('.search-dropdown').innerHTML = '';
 }
 
-document.querySelector('#search-form').addEventListener('submit', clearDropdown);
+document.querySelector('#search-form').addEventListener('submit', () => {
+    setTimeout(clearDropdown, 400);
+});
 document.querySelector('#search-form').addEventListener('focusout', clearDropdown);
 
 function removeRatingForm() {

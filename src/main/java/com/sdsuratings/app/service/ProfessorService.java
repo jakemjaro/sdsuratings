@@ -4,6 +4,7 @@ import com.sdsuratings.app.model.Professor;
 import com.sdsuratings.app.repository.ProfessorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -38,12 +39,20 @@ public class ProfessorService {
     }
 
     public List<Professor> searchProfessorsLimited(String sequence, int limit) {
+        if (sequence.contains("\'") || sequence.contains("\"")) {
+            return Collections.emptyList();
+        }
+
         List<Professor> professorList = professorRepository.findByNameContainsLimited(sequence, limit);
         professorList.forEach(professor -> setAverages(professor));
         return professorList;
     }
 
     public List<Professor> searchProfessors(String sequence) {
+        if (sequence.contains("\'") || sequence.contains("\"")) {
+            return Collections.emptyList();
+        }
+
         List<Professor> professorList = professorRepository.findAllByNameContains(sequence);
         professorList.forEach(professor -> setAverages(professor));
         return professorList;
