@@ -538,6 +538,16 @@ h1 span {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0.5rem;
+}
+
+.no-professors-message span {
+    color: var(--main-red);
+}
+
+.no-professors-message span:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .hidden-cushion {

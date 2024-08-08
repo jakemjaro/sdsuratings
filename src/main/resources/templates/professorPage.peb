@@ -22,7 +22,9 @@
         {% endfor %}
         <div class="hidden-cushion"></div>
     {% else %}
-        {% include "noRatingsMessage" %}
+        <div class="no-ratings-message">
+            <div>This professor has no ratings.</div>
+        </div>
     {% endif %}
     </div>
 </div>
