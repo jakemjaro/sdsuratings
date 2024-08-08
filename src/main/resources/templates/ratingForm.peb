@@ -176,7 +176,7 @@
 
         <div class="rating-form-buttons">
             <button type="button" class="rating-form-cancel" onclick="removeRatingForm()">Cancel</button>
-            <button type="submit" class="rating-form-submit">Submit</button>
+            <button type="submit" class="rating-form-submit" onclick="removeRatingFormDelayed()">Submit</button>
         </div>
     </form>
 </div>

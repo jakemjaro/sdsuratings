@@ -10,3 +10,7 @@ document.querySelector('#search-form').addEventListener('focusout', clearDropdow
 function removeRatingForm() {
     document.querySelector('.rating-form-container').remove();
 }
+
+function removeRatingFormDelayed() {
+    setTimeout(removeRatingForm, 200);
+}
