@@ -52,7 +52,7 @@
 
             <div class="rating-form-selector">
                 <label for="class-type-select">Class Type:&nbsp;</label>
-                <select name="classType" id="class-type-select" required>
+                <select name="class-type" id="class-type-select" required>
                     <option value="" selected disabled hidden>--</option>
                     <option value="In-person">In-person</option>
                     <option value="Online">Online</option>
@@ -186,7 +186,7 @@
                     <option value="WMNST">WMNST</option>
                 </select>
                 <span>&nbsp;-&nbsp;</span>
-                <input type="number" id="course-number" name="course-number" placeholder="XXX" pattern="^\d{3}$" inputmode="numeric" required>
+                <input type="text" id="course-number" name="course-number" placeholder="XXX" required>
             </div>
 
             <div class="rating-form-selector">

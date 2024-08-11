@@ -61,7 +61,7 @@ public class RatingController {
     String add(Model model, @PathVariable int professorId, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
                @RequestParam("course") String course, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
                @RequestParam("description") String description, @RequestParam("accessibility") double accessibility, @RequestParam("workload") String workload,
-               @RequestParam("classType") String classType) throws IOException {
+               @RequestParam("class-type") String classType) throws IOException {
         String fullCourse = course + "-" + courseNumber;
         String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
 

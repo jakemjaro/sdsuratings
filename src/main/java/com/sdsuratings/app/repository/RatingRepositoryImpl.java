@@ -19,7 +19,7 @@ public class RatingRepositoryImpl implements RatingRepository {
 
     @Override
     public void create(Rating rating) {
-        jdbcClient.sql("INSERT INTO ratings (professor_id, quality, difficulty, course, grade, date_published, description, accessibility, workload, classtype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+        jdbcClient.sql("INSERT INTO ratings (professor_id, quality, difficulty, course, grade, date_published, description, accessibility, workload, class_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
                 .params(rating.getProfessorId(), rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDatePublished(), rating.getDescription(), rating.getAccessibility(), rating.getWorkload(), rating.getClassType())
                 .update();
     }
