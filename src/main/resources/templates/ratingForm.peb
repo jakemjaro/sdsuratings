@@ -29,6 +29,28 @@
             </div>
 
             <div class="rating-form-selector">
+                <label for="accessibility-select">Accessibility:&nbsp;</label>
+                <select name="accessibility" id="accessibility-select" required>
+                    <option value="" selected disabled hidden>--</option>
+                    <option value="1.0">1.0</option>
+                    <option value="2.0">2.0</option>
+                    <option value="3.0">3.0</option>
+                    <option value="4.0">4.0</option>
+                    <option value="5.0">5.0</option>
+                </select>
+            </div>
+
+            <div class="rating-form-selector">
+                <label for="workload-select">Workload:&nbsp;</label>
+                <select name="workload" id="workload-select" required>
+                    <option value="" selected disabled hidden>--</option>
+                    <option value="Light">Light</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Heavy">Heavy</option>
+                </select>
+            </div>
+
+            <div class="rating-form-selector">
                 <label for="course-select">Course:&nbsp;</label>
                 <select name="course" id="course-select" required>
                     <option value="" selected disabled hidden>--</option>
