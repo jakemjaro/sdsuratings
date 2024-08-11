@@ -12,8 +12,12 @@ public class Rating {
     private String grade;
     private String datePublished;
     private String description;
+    private double accessibility;
+    private String workload;
+    private String classType;
 
-    public Rating(int professorId, double quality, double difficulty, String course, String grade, String datePublished, String description) {
+    public Rating(int professorId, double quality, double difficulty, String course, String grade, String datePublished, String description,
+                  double accessibility, String workload, String classType) {
         this.id = running_id++;
         this.professorId = professorId;
         this.quality = quality;
@@ -22,6 +26,9 @@ public class Rating {
         this.grade = grade;
         this.datePublished = datePublished;
         this.description = description;
+        this.accessibility = accessibility;
+        this.workload = workload;
+        this.classType = classType;
     }
 
     public int getId() {
@@ -55,6 +62,12 @@ public class Rating {
     public String getDescription() {
         return this.description;
     }
+
+    public double getAccessibility() { return this.accessibility; }
+
+    public String getWorkload() { return this.workload; }
+
+    public String getClassType() { return this.classType; }
 
     public String getBackgroundColor() {
         if (this.quality <= 2) {

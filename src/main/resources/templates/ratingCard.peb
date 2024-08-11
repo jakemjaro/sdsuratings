@@ -3,11 +3,16 @@
         <div class="rating-card-quality">{{ rating.quality }}</div>
     </div>
     <div class="rating-card-right">
+        <div class="rating-card-date">
+            <div>{{ rating.datePublished }}</div>
+        </div>
         <div class="rating-card-stats">
             <span><strong>Course: &nbsp;</strong>{{ rating.course }}</span>
             <span><strong>Difficulty: &nbsp;</strong>{{ rating.difficulty }}</span>
+            <span><strong>Accessibility: &nbsp;</strong>{{ rating.accessibility }}</span>
+            <span><strong>Workload: &nbsp;</strong>{{ rating.workload }}</span>
+            <span><strong>Class Type: &nbsp;</strong>{{ rating.classType }}</span>
             <span><strong>Grade: &nbsp;</strong>{{ rating.grade }}</span>
-            <span><strong>Date: &nbsp;</strong>{{ rating.datePublished }}</span>
         </div>
         <div class="rating-card-text">{{ rating.description }}</div>
     </div>

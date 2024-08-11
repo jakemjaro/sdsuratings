@@ -51,6 +51,16 @@
             </div>
 
             <div class="rating-form-selector">
+                <label for="class-type-select">Class Type:&nbsp;</label>
+                <select name="classType" id="class-type-select" required>
+                    <option value="" selected disabled hidden>--</option>
+                    <option value="In-person">In-person</option>
+                    <option value="Online">Online</option>
+                    <option value="Async">Async</option>
+                </select>
+            </div>
+
+            <div class="rating-form-selector">
                 <label for="course-select">Course:&nbsp;</label>
                 <select name="course" id="course-select" required>
                     <option value="" selected disabled hidden>--</option>

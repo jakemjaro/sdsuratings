@@ -59,11 +59,13 @@ public class RatingController {
     @PostMapping("/add/{professorId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     String add(Model model, @PathVariable int professorId, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
-               @RequestParam("course") String course, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade, @RequestParam("description") String description) throws IOException {
+               @RequestParam("course") String course, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
+               @RequestParam("description") String description, @RequestParam("accessibility") double accessibility, @RequestParam("workload") String workload,
+               @RequestParam("classType") String classType) throws IOException {
         String fullCourse = course + "-" + courseNumber;
         String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
 
-        ratingService.addRating(new Rating(professorId, quality, difficulty, fullCourse, grade, formattedDate, description));
+        ratingService.addRating(new Rating(professorId, quality, difficulty, fullCourse, grade, formattedDate, description, accessibility, workload, classType));
 
         List<Rating> ratingsList = ratingService.getRatingsForProfessor(professorId);
         Professor professor = professorService.getProfessor(professorId);
