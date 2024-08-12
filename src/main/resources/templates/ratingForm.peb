@@ -186,7 +186,7 @@
                     <option value="WMNST">WMNST</option>
                 </select>
                 <span>&nbsp;-&nbsp;</span>
-                <input type="text" id="course-number" name="course-number" placeholder="XXX" required>
+                <input type="text" id="course-number" name="course-number" placeholder="XXX" autocomplete="off" required>
             </div>
 
             <div class="rating-form-selector">

@@ -3,8 +3,12 @@
         <div class="rating-card-quality">{{ rating.quality }}</div>
     </div>
     <div class="rating-card-right">
-        <div class="rating-card-date">
-            <div>{{ rating.datePublished }}</div>
+        <div class="rating-card-functions">
+            <div class="rating-card-edit-delete">
+                <i class='bx bxs-trash' ></i>
+                <i class='bx bxs-pencil' ></i>
+            </div>
+            <div class="rating-card-date">{{ rating.datePublished }}</div>
         </div>
         <div class="rating-card-stats">
             <span><strong>Course: &nbsp;</strong>{{ rating.course }}</span>

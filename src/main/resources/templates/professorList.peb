@@ -1,5 +1,20 @@
 <div class="professor-list-container">
-{% for professor in allProfessors %}
-{% include "professorCard" %}
-{% endfor %}
+    <div class="professor-list-operations">
+        <form class="professor-list-sort">
+            <label for="sort-select">Sort By: </label>
+            <select name="sort-select" id="sort-select">
+                <option value="first_name">First Name (A-Z)</option>
+                <option value="last_name">Last Name (A-Z)</option>
+                <option value="first_name">First Name (Z-A)</option>
+                <option value="last_name">Last Name (Z-A)</option>
+                <option value="">Rating</option>
+            </select>
+            <button type="submit"><i class='bx bx-check'></i></button>
+        </form>
+
+        <button>Add Professor</button>
+    </div>
+    {% for professor in allProfessors %}
+    {% include "professorCard" %}
+    {% endfor %}
 </div>

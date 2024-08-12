@@ -166,6 +166,13 @@ nav {
     padding: 1rem 0;
 }
 
+.professor-list-operations {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .welcome-message {
     height: 80%;
     display: flex;
@@ -389,9 +396,21 @@ h1 span {
     gap: 1rem;
 }
 
-.rating-card-date {
+.rating-card-functions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating-card-edit-delete {
+    font-size: 1.15rem;
+}
+
+.rating-card-edit-delete i:hover {
+    cursor: pointer;
+}
+
+.rating-card-date {
     font-size: 1.05rem;
 }
 
