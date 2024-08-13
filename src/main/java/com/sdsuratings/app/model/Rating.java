@@ -80,5 +80,15 @@ public class Rating {
     public String getFormattedDate() {
         return this.datePublished.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
     }
+
+    public String getCourseDepartment() {
+        int index = this.course.indexOf("-");
+        return this.course.substring(0, index);
+    }
+
+    public String getCourseNumber() {
+        int index = this.course.indexOf("-");
+        return this.course.substring(index + 1);
+    }
 }
 

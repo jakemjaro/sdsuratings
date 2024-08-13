@@ -59,37 +59,67 @@ public class RatingController {
     @PostMapping("/add/{professorId}")
     @ResponseStatus(HttpStatus.CREATED)
     String add(Model model, @PathVariable int professorId, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
-               @RequestParam("course") String course, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
+               @RequestParam("course-dept") String courseDept, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
                @RequestParam("description") String description, @RequestParam("accessibility") double accessibility, @RequestParam("workload") String workload,
                @RequestParam("class-type") String classType) throws IOException {
-        String fullCourse = course + "-" + courseNumber;
+        String fullCourse = courseDept + "-" + courseNumber;
 
         ratingService.addRating(new Rating(-1, professorId, quality, difficulty, fullCourse, grade, LocalDate.now(), description, accessibility, workload, classType));
 
-        List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
         Professor professor = professorService.getProfessor(professorId);
+        List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
 
-        model.addAttribute("ratingList", ratingList);
         model.addAttribute("professor", professor);
+        model.addAttribute("ratingList", ratingList);
 
         return render(new StringWriter(), "professorPage", model.asMap());
     }
 
     @DeleteMapping("/delete/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    String delete(Model model, @PathVariable("id") int id) throws IOException {
+    @ResponseStatus(HttpStatus.OK)
+    String delete(Model model, @PathVariable int id) throws IOException {
+        int professorId = ratingService.getRating(id).getProfessorId();
+
         ratingService.deleteRating(id);
 
-        return "";
+        Professor professor = professorService.getProfessor(professorId);
+        List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
+
+        model.addAttribute("professor", professor);
+        model.addAttribute("ratingList", ratingList);
+
+        return render(new StringWriter(), "professorPage", model.asMap());
+    }
+
+    @GetMapping("/edit/form/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    String editForm(Model model, @PathVariable int id) throws IOException {
+        Rating rating = ratingService.getRating(id);
+        model.addAttribute("rating", rating);
+
+        return render(new StringWriter(), "ratingEditForm", model.asMap());
     }
 
     @PutMapping("/edit/{id}")
     @ResponseStatus(HttpStatus.OK)
     String edit(Model model, @PathVariable int id, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
-                @RequestParam("course") String course, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
+                @RequestParam("course-dept") String courseDept, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
                 @RequestParam("description") String description, @RequestParam("accessibility") double accessibility, @RequestParam("workload") String workload,
                 @RequestParam("class-type") String classType) throws IOException {
+        int professorId = ratingService.getRating(id).getProfessorId();
 
-        return "";
+        String fullCourse = courseDept + "-" + courseNumber;
+
+        ratingService.updateRating(new Rating(id, professorId, quality, difficulty, fullCourse, grade, LocalDate.now(), description, accessibility, workload, classType));
+
+        Professor professor = professorService.getProfessor(professorId);
+        List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
+
+        model.addAttribute("professor", professor);
+        model.addAttribute("ratingList", ratingList);
+
+        return render(new StringWriter(), "professorPage", model.asMap());
     }
+
+
 }

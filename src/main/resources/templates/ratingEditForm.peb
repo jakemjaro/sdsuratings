@@ -1,0 +1,207 @@
+<div class="rating-form-container">
+    <form class="rating-form" hx-put="/rating/edit/{{ rating.id }}" hx-target=".main-container">
+        <div class="rating-form-header">
+            <h2>Edit Rating</h2>
+        </div>
+        <div class="rating-form-dropdowns">
+            <div class="rating-form-selector">
+                <label for="quality-select">Quality:&nbsp;</label>
+                <select name="quality" id="quality-select" required>
+                    <option value="1.0" {% if rating.quality == 1.0 %}selected{% endif %}>1.0</option>
+                    <option value="2.0" {% if rating.quality == 2.0 %}selected{% endif %}>2.0</option>
+                    <option value="3.0" {% if rating.quality == 3.0 %}selected{% endif %}>3.0</option>
+                    <option value="4.0" {% if rating.quality == 4.0 %}selected{% endif %}>4.0</option>
+                    <option value="5.0" {% if rating.quality == 5.0 %}selected{% endif %}>5.0</option>
+                </select>
+            </div>
+
+            <div class="rating-form-selector">
+                <label for="difficulty-select">Difficulty:&nbsp;</label>
+                <select name="difficulty" id="difficulty-select" required>
+                    <option value="1.0" {% if rating.difficulty == 1.0 %}selected{% endif %}>1.0</option>
+                    <option value="2.0" {% if rating.difficulty == 2.0 %}selected{% endif %}>2.0</option>
+                    <option value="3.0" {% if rating.difficulty == 3.0 %}selected{% endif %}>3.0</option>
+                    <option value="4.0" {% if rating.difficulty == 4.0 %}selected{% endif %}>4.0</option>
+                    <option value="5.0" {% if rating.difficulty == 5.0 %}selected{% endif %}>5.0</option>
+                </select>
+            </div>
+
+            <div class="rating-form-selector">
+                <label for="accessibility-select">Accessibility:&nbsp;</label>
+                <select name="accessibility" id="accessibility-select" required>
+                    <option value="1.0" {% if rating.accessibility == 1.0 %}selected{% endif %}>1.0</option>
+                    <option value="2.0" {% if rating.accessibility == 2.0 %}selected{% endif %}>2.0</option>
+                    <option value="3.0" {% if rating.accessibility == 3.0 %}selected{% endif %}>3.0</option>
+                    <option value="4.0" {% if rating.accessibility == 4.0 %}selected{% endif %}>4.0</option>
+                    <option value="5.0" {% if rating.accessibility == 5.0 %}selected{% endif %}>5.0</option>
+                </select>
+            </div>
+
+            <div class="rating-form-selector">
+                <label for="workload-select">Workload:&nbsp;</label>
+                <select name="workload" id="workload-select" required>
+                    <option value="Light" {% if rating.workload == "Light" %}selected{% endif %}>Light</option>
+                    <option value="Moderate" {% if rating.workload == "Moderate" %}selected{% endif %}>Moderate</option>
+                    <option value="Heavy" {% if rating.workload == "Heavy" %}selected{% endif %}>Heavy</option>
+                </select>
+            </div>
+
+            <div class="rating-form-selector">
+                <label for="class-type-select">Class Type:&nbsp;</label>
+                <select name="class-type" id="class-type-select" required>
+                    <option value="In-person" {% if rating.classType == "In-person" %}selected{% endif %}>In-person</option>
+                    <option value="Online" {% if rating.classType == "Online" %}selected{% endif %}>Online</option>
+                    <option value="Async" {% if rating.classType == "Async" %}selected{% endif %}>Async</option>
+                </select>
+            </div>
+
+            <div class="rating-form-selector">
+                <label for="course-select">Course:&nbsp;</label>
+                <select name="course-dept" id="course-select" required>
+                    <option value="A S" {% if rating.getCourseDepartment() == "A S" %}selected{% endif %}>A S</option>
+                    <option value="ACCTG" {% if rating.getCourseDepartment() == "ACCTG" %}selected{% endif %}>ACCTG</option>
+                    <option value="AFRAS" {% if rating.getCourseDepartment() == "AFRAS" %}selected{% endif %}>AFRAS</option>
+                    <option value="AMIND" {% if rating.getCourseDepartment() == "AMIND" %}selected{% endif %}>AMIND</option>
+                    <option value="ANTH" {% if rating.getCourseDepartment() == "ANTH" %}selected{% endif %}>ANTH</option>
+                    <option value="ARAB" {% if rating.getCourseDepartment() == "ARAB" %}selected{% endif %}>ARAB</option>
+                    <option value="ARP" {% if rating.getCourseDepartment() == "ARP" %}selected{% endif %}>ARP</option>
+                    <option value="ART" {% if rating.getCourseDepartment() == "ART" %}selected{% endif %}>ART</option>
+                    <option value="ASIAN" {% if rating.getCourseDepartment() == "ASIAN" %}selected{% endif %}>ASIAN</option>
+                    <option value="ASTR" {% if rating.getCourseDepartment() == "ASTR" %}selected{% endif %}>ASTR</option>
+                    <option value="AUD" {% if rating.getCourseDepartment() == "AUD" %}selected{% endif %}>AUD</option>
+                    <option value="B A" {% if rating.getCourseDepartment() == "B A" %}selected{% endif %}>B A</option>
+                    <option value="BDA" {% if rating.getCourseDepartment() == "BDA" %}selected{% endif %}>BDA</option>
+                    <option value="BIOL" {% if rating.getCourseDepartment() == "BIOL" %}selected{% endif %}>BIOL</option>
+                    <option value="BIOMI" {% if rating.getCourseDepartment() == "BIOMI" %}selected{% endif %}>BIOMI</option>
+                    <option value="BQS" {% if rating.getCourseDepartment() == "BQS" %}selected{% endif %}>BQS</option>
+                    <option value="BRAZ" {% if rating.getCourseDepartment() == "BRAZ" %}selected{% endif %}>BRAZ</option>
+                    <option value="C P" {% if rating.getCourseDepartment() == "C P" %}selected{% endif %}>C P</option>
+                    <option value="CAL" {% if rating.getCourseDepartment() == "CAL" %}selected{% endif %}>CAL</option>
+                    <option value="CCS" {% if rating.getCourseDepartment() == "CCS" %}selected{% endif %}>CCS</option>
+                    <option value="CFD" {% if rating.getCourseDepartment() == "CFD" %}selected{% endif %}>CFD</option>
+                    <option value="CHEM" {% if rating.getCourseDepartment() == "CHEM" %}selected{% endif %}>CHEM</option>
+                    <option value="CHIN" {% if rating.getCourseDepartment() == "CHIN" %}selected{% endif %}>CHIN</option>
+                    <option value="CINTS" {% if rating.getCourseDepartment() == "CINTS" %}selected{% endif %}>CINTS</option>
+                    <option value="CIV E" {% if rating.getCourseDepartment() == "CIV E" %}selected{% endif %}>CIV E</option>
+                    <option value="CJ" {% if rating.getCourseDepartment() == "CJ" %}selected{% endif %}>CJ</option>
+                    <option value="CLASS" {% if rating.getCourseDepartment() == "CLASS" %}selected{% endif %}>CLASS</option>
+                    <option value="COMM" {% if rating.getCourseDepartment() == "COMM" %}selected{% endif %}>COMM</option>
+                    <option value="COMP" {% if rating.getCourseDepartment() == "COMP" %}selected{% endif %}>COMP</option>
+                    <option value="COMPE" {% if rating.getCourseDepartment() == "COMPE" %}selected{% endif %}>COMPE</option>
+                    <option value="CON E" {% if rating.getCourseDepartment() == "CON E" %}selected{% endif %}>CON E</option>
+                    <option value="CS" {% if rating.getCourseDepartment() == "CS" %}selected{% endif %}>CS</option>
+                    <option value="CSP" {% if rating.getCourseDepartment() == "CSP" %}selected{% endif %}>CSP</option>
+                    <option value="DANCE" {% if rating.getCourseDepartment() == "DANCE" %}selected{% endif %}>DANCE</option>
+                    <option value="DLE" {% if rating.getCourseDepartment() == "DLE" %}selected{% endif %}>DLE</option>
+                    <option value="DPT" {% if rating.getCourseDepartment() == "DPT" %}selected{% endif %}>DPT</option>
+                    <option value="E E" {% if rating.getCourseDepartment() == "E E" %}selected{% endif %}>E E</option>
+                    <option value="ECL" {% if rating.getCourseDepartment() == "ECL" %}selected{% endif %}>ECL</option>
+                    <option value="ECON" {% if rating.getCourseDepartment() == "ECON" %}selected{% endif %}>ECON</option>
+                    <option value="ED" {% if rating.getCourseDepartment() == "ED" %}selected{% endif %}>ED</option>
+                    <option value="EDL" {% if rating.getCourseDepartment() == "EDL" %}selected{% endif %}>EDL</option>
+                    <option value="ENGR" {% if rating.getCourseDepartment() == "ENGR" %}selected{% endif %}>ENGR</option>
+                    <option value="ENS" {% if rating.getCourseDepartment() == "ENS" %}selected{% endif %}>ENS</option>
+                    <option value="ENV E" {% if rating.getCourseDepartment() == "ENV E" %}selected{% endif %}>ENV E</option>
+                    <option value="ENV S" {% if rating.getCourseDepartment() == "ENV S" %}selected{% endif %}>ENV S</option>
+                    <option value="EUROP" {% if rating.getCourseDepartment() == "EUROP" %}selected{% endif %}>EUROP</option>
+                    <option value="FILIP" {% if rating.getCourseDepartment() == "FILIP" %}selected{% endif %}>FILIP</option>
+                    <option value="FIN" {% if rating.getCourseDepartment() == "FIN" %}selected{% endif %}>FIN</option>
+                    <option value="FRENC" {% if rating.getCourseDepartment() == "FRENC" %}selected{% endif %}>FRENC</option>
+                    <option value="GEN S" {% if rating.getCourseDepartment() == "GEN S" %}selected{% endif %}>GEN S</option>
+                    <option value="GEOG" {% if rating.getCourseDepartment() == "GEOG" %}selected{% endif %}>GEOG</option>
+                    <option value="GEOL" {% if rating.getCourseDepartment() == "GEOL" %}selected{% endif %}>GEOL</option>
+                    <option value="GERMN" {% if rating.getCourseDepartment() == "GERMN" %}selected{% endif %}>GERMN</option>
+                    <option value="GERO" {% if rating.getCourseDepartment() == "GERO" %}selected{% endif %}>GERO</option>
+                    <option value="H SEC" {% if rating.getCourseDepartment() == "H SEC" %}selected{% endif %}>H SEC</option>
+                    <option value="HEBRW" {% if rating.getCourseDepartment() == "HEBRW" %}selected{% endif %}>HEBRW</option>
+                    <option value="HHS" {% if rating.getCourseDepartment() == "HHS" %}selected{% endif %}>HHS</option>
+                    <option value="HIST" {% if rating.getCourseDepartment() == "HIST" %}selected{% endif %}>HIST</option>
+                    <option value="HONOR" {% if rating.getCourseDepartment() == "HONOR" %}selected{% endif %}>HONOR</option>
+                    <option value="HTM" {% if rating.getCourseDepartment() == "HTM" %}selected{% endif %}>HTM</option>
+                    <option value="HUM" {% if rating.getCourseDepartment() == "HUM" %}selected{% endif %}>HUM</option>
+                    <option value="I B" {% if rating.getCourseDepartment() == "I B" %}selected{% endif %}>I B</option>
+                    <option value="INT S" {% if rating.getCourseDepartment() == "INT S" %}selected{% endif %}>INT S</option>
+                    <option value="ISCOR" {% if rating.getCourseDepartment() == "ISCOR" %}selected{% endif %}>ISCOR</option>
+                    <option value="ITAL" {% if rating.getCourseDepartment() == "ITAL" %}selected{% endif %}>ITAL</option>
+                    <option value="JAPAN" {% if rating.getCourseDepartment() == "JAPAN" %}selected{% endif %}>JAPAN</option>
+                    <option value="JMS" {% if rating.getCourseDepartment() == "JMS" %}selected{% endif %}>JMS</option>
+                    <option value="JS" {% if rating.getCourseDepartment() == "JS" %}selected{% endif %}>JS</option>
+                    <option value="KOR" {% if rating.getCourseDepartment() == "KOR" %}selected{% endif %}>KOR</option>
+                    <option value="LATAM" {% if rating.getCourseDepartment() == "LATAM" %}selected{% endif %}>LATAM</option>
+                    <option value="LCS" {% if rating.getCourseDepartment() == "LCS" %}selected{% endif %}>LCS</option>
+                    <option value="LDT" {% if rating.getCourseDepartment() == "LDT" %}selected{% endif %}>LDT</option>
+                    <option value="LEAD" {% if rating.getCourseDepartment() == "LEAD" %}selected{% endif %}>LEAD</option>
+                    <option value="LGBT" {% if rating.getCourseDepartment() == "LGBT" %}selected{% endif %}>LGBT</option>
+                    <option value="LIB S" {% if rating.getCourseDepartment() == "LIB S" %}selected{% endif %}>LIB S</option>
+                    <option value="LING" {% if rating.getCourseDepartment() == "LING" %}selected{% endif %}>LING</option>
+                    <option value="M BIO" {% if rating.getCourseDepartment() == "M BIO" %}selected{% endif %}>M BIO</option>
+                    <option value="M E" {% if rating.getCourseDepartment() == "M E" %}selected{% endif %}>M E</option>
+                    <option value="M S E" {% if rating.getCourseDepartment() == "M S E" %}selected{% endif %}>M S E</option>
+                    <option value="MALAS" {% if rating.getCourseDepartment() == "MALAS" %}selected{% endif %}>MALAS</option>
+                    <option value="MATH" {% if rating.getCourseDepartment() == "MATH" %}selected{% endif %}>MATH</option>
+                    <option value="MGT" {% if rating.getCourseDepartment() == "MGT" %}selected{% endif %}>MGT</option>
+                    <option value="MIL S" {% if rating.getCourseDepartment() == "MIL S" %}selected{% endif %}>MIL S</option>
+                    <option value="MIS" {% if rating.getCourseDepartment() == "MIS" %}selected{% endif %}>MIS</option>
+                    <option value="MKTG" {% if rating.getCourseDepartment() == "MKTG" %}selected{% endif %}>MKTG</option>
+                    <option value="MTHED" {% if rating.getCourseDepartment() == "MTHED" %}selected{% endif %}>MTHED</option>
+                    <option value="MUSIC" {% if rating.getCourseDepartment() == "MUSIC" %}selected{% endif %}>MUSIC</option>
+                    <option value="N SCI" {% if rating.getCourseDepartment() == "N SCI" %}selected{% endif %}>N SCI</option>
+                    <option value="NAV S" {% if rating.getCourseDepartment() == "NAV S" %}selected{% endif %}>NAV S</option>
+                    <option value="NURS" {% if rating.getCourseDepartment() == "NURS" %}selected{% endif %}>NURS</option>
+                    <option value="NUTR" {% if rating.getCourseDepartment() == "NUTR" %}selected{% endif %}>NUTR</option>
+                    <option value="OCEAN" {% if rating.getCourseDepartment() == "OCEAN" %}selected{% endif %}>OCEAN</option>
+                    <option value="P A" {% if rating.getCourseDepartment() == "P A" %}selected{% endif %}>P A</option>
+                    <option value="P H" {% if rating.getCourseDepartment() == "P H" %}selected{% endif %}>P H</option>
+                    <option value="PERS" {% if rating.getCourseDepartment() == "PERS" %}selected{% endif %}>PERS</option>
+                    <option value="PHIL" {% if rating.getCourseDepartment() == "PHIL" %}selected{% endif %}>PHIL</option>
+                    <option value="PHYS" {% if rating.getCourseDepartment() == "PHYS" %}selected{% endif %}>PHYS</option>
+                    <option value="POL S" {% if rating.getCourseDepartment() == "POL S" %}selected{% endif %}>POL S</option>
+                    <option value="PORT" {% if rating.getCourseDepartment() == "PORT" %}selected{% endif %}>PORT</option>
+                    <option value="PSFA" {% if rating.getCourseDepartment() == "PSFA" %}selected{% endif %}>PSFA</option>
+                    <option value="PSY" {% if rating.getCourseDepartment() == "PSY" %}selected{% endif %}>PSY</option>
+                    <option value="R A" {% if rating.getCourseDepartment() == "R A" %}selected{% endif %}>R A</option>
+                    <option value="REL S" {% if rating.getCourseDepartment() == "REL S" %}selected{% endif %}>REL S</option>
+                    <option value="RTM" {% if rating.getCourseDepartment() == "RTM" %}selected{% endif %}>RTM</option>
+                    <option value="RUSSN" {% if rating.getCourseDepartment() == "RUSSN" %}selected{% endif %}>RUSSN</option>
+                    <option value="RWS" {% if rating.getCourseDepartment() == "RWS" %}selected{% endif %}>RWS</option>
+                    <option value="SCI" {% if rating.getCourseDepartment() == "SCI" %}selected{% endif %}>SCI</option>
+                    <option value="SLHS" {% if rating.getCourseDepartment() == "SLHS" %}selected{% endif %}>SLHS</option>
+                    <option value="SOC" {% if rating.getCourseDepartment() == "SOC" %}selected{% endif %}>SOC</option>
+                    <option value="SOCSI" {% if rating.getCourseDepartment() == "SOCSI" %}selected{% endif %}>SOCSI</option>
+                    <option value="SPAN" {% if rating.getCourseDepartment() == "SPAN" %}selected{% endif %}>SPAN</option>
+                    <option value="SPED" {% if rating.getCourseDepartment() == "SPED" %}selected{% endif %}>SPED</option>
+                    <option value="STAT" {% if rating.getCourseDepartment() == "STAT" %}selected{% endif %}>STAT</option>
+                    <option value="STS" {% if rating.getCourseDepartment() == "STS" %}selected{% endif %}>STS</option>
+                    <option value="SUSTN" {% if rating.getCourseDepartment() == "SUSTN" %}selected{% endif %}>SUSTN</option>
+                    <option value="SWORK" {% if rating.getCourseDepartment() == "SWORK" %}selected{% endif %}>SWORK</option>
+                    <option value="TE" {% if rating.getCourseDepartment() == "TE" %}selected{% endif %}>TE</option>
+                    <option value="TFM" {% if rating.getCourseDepartment() == "TFM" %}selected{% endif %}>TFM</option>
+                    <option value="THEA" {% if rating.getCourseDepartment() == "THEA" %}selected{% endif %}>THEA</option>
+                    <option value="WMNST" {% if rating.getCourseDepartment() == "WMNST" %}selected{% endif %}>WMNST</option>
+                </select>
+                <span>&nbsp;-&nbsp;</span>
+                <input type="text" id="course-number" name="course-number" placeholder="XXX" autocomplete="off" required value="{{ rating.getCourseNumber() }}">
+            </div>
+
+            <div class="rating-form-selector">
+                <label for="grade-select">Grade:&nbsp;</label>
+                <select name="grade" id="grade-select" required>
+                    <option value="A" {% if rating.grade == "A" %}selected{% endif %}>A</option>
+                    <option value="B" {% if rating.grade == "B" %}selected{% endif %}>B</option>
+                    <option value="C" {% if rating.grade == "C" %}selected{% endif %}>C</option>
+                    <option value="D" {% if rating.grade == "D" %}selected{% endif %}>D</option>
+                    <option value="F" {% if rating.grade == "F" %}selected{% endif %}>F</option>
+                    <option value="IP" {% if rating.grade == "IP" %}selected{% endif %}>IP</option>
+                    <option value="N/A" {% if rating.grade == "N/A" %}selected{% endif %}>N/A</option>
+                </select>
+            </div>
+        </div>
+
+        <textarea name="description" class="rating-form-description" required>{{ rating.description }}</textarea>
+
+        <div class="rating-form-buttons">
+            <button type="button" class="rating-form-cancel" onclick="removeRatingForm()">Cancel</button>
+            <button type="submit" class="rating-form-submit" onclick="removeRatingFormDelayed()">Submit</button>
+        </div>
+    </form>
+</div>

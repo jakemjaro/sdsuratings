@@ -69,10 +69,10 @@ public class RatingRepositoryImpl implements RatingRepository {
 
     @Override
     public void update(Rating rating) {
-        String sqlQuery = "UPDATE ratings SET quality = ?, difficulty = ?, course = ?, grade = ?, date_published = ?, description = ?, accessibility = ?, workload = ?, class_type = ?";
+        String sqlQuery = "UPDATE ratings SET quality = ?, difficulty = ?, course = ?, grade = ?, date_published = ?, description = ?, accessibility = ?, workload = ?, class_type = ? WHERE id = ?";
 
         jdbcClient.sql(sqlQuery)
-                .params(rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDatePublished(), rating.getDescription(), rating.getAccessibility(), rating.getWorkload(), rating.getClassType())
+                .params(rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDatePublished(), rating.getDescription(), rating.getAccessibility(), rating.getWorkload(), rating.getClassType(), rating.getId())
                 .update();
     }
 }

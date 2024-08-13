@@ -62,7 +62,7 @@
 
             <div class="rating-form-selector">
                 <label for="course-select">Course:&nbsp;</label>
-                <select name="course" id="course-select" required>
+                <select name="course-dept" id="course-select" required>
                     <option value="" selected disabled hidden>--</option>
                     <option value="A S">A S</option>
                     <option value="ACCTG">ACCTG</option>
