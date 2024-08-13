@@ -22,7 +22,8 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         String sqlQuery = "INSERT INTO professors (first_name, last_name, department) VALUES (?, ?, ?)";
 
         jdbcClient.sql(sqlQuery)
-                .params(professor.getFirstName(), professor.getLastName(), professor.getDepartment());
+                .params(professor.getFirstName(), professor.getLastName(), professor.getDepartment())
+                .update();
     }
 
     @Override

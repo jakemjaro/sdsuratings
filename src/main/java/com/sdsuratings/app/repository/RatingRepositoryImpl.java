@@ -24,7 +24,8 @@ public class RatingRepositoryImpl implements RatingRepository {
         String sqlQuery = "INSERT INTO ratings (professor_id, quality, difficulty, course, grade, date_published, description, accessibility, workload, class_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         jdbcClient.sql(sqlQuery)
-                .params(rating.getProfessorId(), rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDatePublished(), rating.getDescription(), rating.getAccessibility(), rating.getWorkload(), rating.getClassType());
+                .params(rating.getProfessorId(), rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDatePublished(), rating.getDescription(), rating.getAccessibility(), rating.getWorkload(), rating.getClassType())
+                .update();
     }
 
     @Override
@@ -48,11 +49,22 @@ public class RatingRepositoryImpl implements RatingRepository {
     }
 
     @Override
+    public Rating findById(int id) {
+        String sqlQuery = "SELECT * FROM ratings WHERE id = ?";
+
+        return jdbcClient.sql(sqlQuery)
+                .param(id)
+                .query(Rating.class)
+                .single();
+    }
+
+    @Override
     public void deleteById(int id) {
         String sqlQuery = "DELETE FROM ratings WHERE id = ?";
 
         jdbcClient.sql(sqlQuery)
-                .param(id);
+                .param(id)
+                .update();
     }
 
     @Override
@@ -60,6 +72,7 @@ public class RatingRepositoryImpl implements RatingRepository {
         String sqlQuery = "UPDATE ratings SET quality = ?, difficulty = ?, course = ?, grade = ?, date_published = ?, description = ?, accessibility = ?, workload = ?, class_type = ?";
 
         jdbcClient.sql(sqlQuery)
-                .params(rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDatePublished(), rating.getDescription(), rating.getAccessibility(), rating.getWorkload(), rating.getClassType());
+                .params(rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDatePublished(), rating.getDescription(), rating.getAccessibility(), rating.getWorkload(), rating.getClassType())
+                .update();
     }
 }

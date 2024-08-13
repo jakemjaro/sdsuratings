@@ -27,6 +27,10 @@ public class RatingService {
         return ratingRepository.findAllByCourseByProfessorId(professorId, course);
     }
 
+    public Rating getRating(int id) {
+        return ratingRepository.findById(id);
+    }
+
     public double getAverageQualityForProfessor(int professorId) {
         List<Rating> allRatings = ratingRepository.findAllByProfessorId(professorId);
         OptionalDouble optionalDouble = allRatings.stream()

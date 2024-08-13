@@ -67,10 +67,10 @@ public class RatingController {
 
         ratingService.addRating(new Rating(-1, professorId, quality, difficulty, fullCourse, grade, formattedDate, description, accessibility, workload, classType));
 
-        List<Rating> ratingsList = ratingService.getRatingsForProfessor(professorId);
+        List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
         Professor professor = professorService.getProfessor(professorId);
 
-        model.addAttribute("ratingList", ratingsList);
+        model.addAttribute("ratingList", ratingList);
         model.addAttribute("professor", professor);
 
         return render(new StringWriter(), "professorPage", model.asMap());
@@ -78,7 +78,7 @@ public class RatingController {
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    String delete(Model model, @PathVariable("id") int id) {
+    String delete(Model model, @PathVariable("id") int id) throws IOException {
         ratingService.deleteRating(id);
 
         return "";
