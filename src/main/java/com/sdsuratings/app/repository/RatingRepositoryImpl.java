@@ -30,7 +30,7 @@ public class RatingRepositoryImpl implements RatingRepository {
 
     @Override
     public List<Rating> findAllByProfessorId(int professorId) {
-        String sqlQuery = "SELECT * FROM ratings WHERE professor_id = ?";
+        String sqlQuery = "SELECT * FROM ratings WHERE professor_id = ? ORDER BY date_published DESC, id DESC";
 
         return jdbcClient.sql(sqlQuery)
                 .param(professorId)
@@ -40,7 +40,7 @@ public class RatingRepositoryImpl implements RatingRepository {
 
     @Override
     public List<Rating> findAllByCourseByProfessorId(int professorId, String course) {
-        String sqlQuery = "SELECT * FROM ratings WHERE (professor_id = ?) AND (course = ?)";
+        String sqlQuery = "SELECT * FROM ratings WHERE (professor_id = ?) AND (course = ?) ORDER BY date_published DESC, id DESC";
 
         return jdbcClient.sql(sqlQuery)
                 .params(professorId, course)

@@ -8,7 +8,7 @@
                 <i class='bx bxs-trash' hx-delete="/rating/delete/{{ rating.id }}"></i>
                 <i class='bx bxs-pencil' ></i>
             </div>
-            <div class="rating-card-date">{{ rating.datePublished }}</div>
+            <div class="rating-card-date">{{ rating.getFormattedDate() }}</div>
         </div>
         <div class="rating-card-stats">
             <span><strong>Course: &nbsp;</strong>{{ rating.course }}</span>

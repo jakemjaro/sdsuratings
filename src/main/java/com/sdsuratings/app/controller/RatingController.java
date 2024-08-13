@@ -63,9 +63,8 @@ public class RatingController {
                @RequestParam("description") String description, @RequestParam("accessibility") double accessibility, @RequestParam("workload") String workload,
                @RequestParam("class-type") String classType) throws IOException {
         String fullCourse = course + "-" + courseNumber;
-        String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
 
-        ratingService.addRating(new Rating(-1, professorId, quality, difficulty, fullCourse, grade, formattedDate, description, accessibility, workload, classType));
+        ratingService.addRating(new Rating(-1, professorId, quality, difficulty, fullCourse, grade, LocalDate.now(), description, accessibility, workload, classType));
 
         List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
         Professor professor = professorService.getProfessor(professorId);

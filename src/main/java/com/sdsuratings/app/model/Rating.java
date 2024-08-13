@@ -8,13 +8,13 @@ public class Rating {
     private double quality, difficulty;
     private String course;
     private String grade;
-    private String datePublished;
+    private LocalDate datePublished;
     private String description;
     private double accessibility;
     private String workload;
     private String classType;
 
-    public Rating(int id, int professorId, double quality, double difficulty, String course, String grade, String datePublished, String description,
+    public Rating(int id, int professorId, double quality, double difficulty, String course, String grade, LocalDate datePublished, String description,
                   double accessibility, String workload, String classType) {
         this.id = id;
         this.professorId = professorId;
@@ -53,7 +53,7 @@ public class Rating {
         return this.grade;
     }
 
-    public String getDatePublished() {
+    public LocalDate getDatePublished() {
         return this.datePublished;
     }
 
@@ -75,6 +75,10 @@ public class Rating {
         } else {
             return BackgroundColors.GREEN.className;
         }
+    }
+
+    public String getFormattedDate() {
+        return this.datePublished.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
     }
 }
 
