@@ -10,4 +10,8 @@ public interface RatingRepository {
     List<Rating> findAllByProfessorId(int professorId);
 
     List<Rating> findAllByCourseByProfessorId(int professorId, String course);
+
+    void deleteById(int id);
+
+    void update(Rating rating);
 }

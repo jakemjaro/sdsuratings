@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Rating {
-    private static int running_id = 1;
-
     private int id, professorId;
     private double quality, difficulty;
     private String course;
@@ -16,9 +14,9 @@ public class Rating {
     private String workload;
     private String classType;
 
-    public Rating(int professorId, double quality, double difficulty, String course, String grade, String datePublished, String description,
+    public Rating(int id, int professorId, double quality, double difficulty, String course, String grade, String datePublished, String description,
                   double accessibility, String workload, String classType) {
-        this.id = running_id++;
+        this.id = id;
         this.professorId = professorId;
         this.quality = quality;
         this.difficulty = difficulty;

@@ -57,7 +57,7 @@ public class RatingController {
     }
 
     @PostMapping("/add/{professorId}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     String add(Model model, @PathVariable int professorId, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
                @RequestParam("course") String course, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
                @RequestParam("description") String description, @RequestParam("accessibility") double accessibility, @RequestParam("workload") String workload,
@@ -65,7 +65,7 @@ public class RatingController {
         String fullCourse = course + "-" + courseNumber;
         String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
 
-        ratingService.addRating(new Rating(professorId, quality, difficulty, fullCourse, grade, formattedDate, description, accessibility, workload, classType));
+        ratingService.addRating(new Rating(-1, professorId, quality, difficulty, fullCourse, grade, formattedDate, description, accessibility, workload, classType));
 
         List<Rating> ratingsList = ratingService.getRatingsForProfessor(professorId);
         Professor professor = professorService.getProfessor(professorId);
@@ -76,4 +76,21 @@ public class RatingController {
         return render(new StringWriter(), "professorPage", model.asMap());
     }
 
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    String delete(Model model, @PathVariable("id") int id) {
+        ratingService.deleteRating(id);
+
+        return "";
+    }
+
+    @PutMapping("/edit/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    String edit(Model model, @PathVariable int id, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
+                @RequestParam("course") String course, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
+                @RequestParam("description") String description, @RequestParam("accessibility") double accessibility, @RequestParam("workload") String workload,
+                @RequestParam("class-type") String classType) throws IOException {
+
+        return "";
+    }
 }

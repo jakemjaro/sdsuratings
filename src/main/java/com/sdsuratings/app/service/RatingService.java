@@ -44,4 +44,12 @@ public class RatingService {
 
         return (optionalDouble.isPresent()) ? optionalDouble.getAsDouble() : -1.0;
     }
+
+    public void deleteRating(int id) {
+        ratingRepository.deleteById(id);
+    }
+
+    public void updateRating(Rating rating) {
+        ratingRepository.update(rating);
+    }
 }

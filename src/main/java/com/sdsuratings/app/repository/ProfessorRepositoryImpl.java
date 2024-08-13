@@ -19,21 +19,26 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     @Override
     public void create(Professor professor) {
-        jdbcClient.sql("INSERT INTO professors (first_name, last_name, department) VALUES (?, ?, ?)")
-                .params(professor.getFirstName(), professor.getLastName(), professor.getDepartment())
-                .update();
+        String sqlQuery = "INSERT INTO professors (first_name, last_name, department) VALUES (?, ?, ?)";
+
+        jdbcClient.sql(sqlQuery)
+                .params(professor.getFirstName(), professor.getLastName(), professor.getDepartment());
     }
 
     @Override
     public List<Professor> findAll() {
-        return jdbcClient.sql("SELECT * FROM professors")
+        String sqlQuery = "SELECT * FROM professors";
+
+        return jdbcClient.sql(sqlQuery)
                 .query(Professor.class)
                 .list();
     }
 
     @Override
     public Professor findById(int id) {
-        return jdbcClient.sql("SELECT * FROM professors WHERE id = ?")
+        String sqlQuery = "SELECT * FROM professors WHERE id = ?";
+
+        return jdbcClient.sql(sqlQuery)
                 .param(id)
                 .query(Professor.class)
                 .single();

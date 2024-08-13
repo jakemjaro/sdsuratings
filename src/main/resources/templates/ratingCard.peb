@@ -5,7 +5,7 @@
     <div class="rating-card-right">
         <div class="rating-card-functions">
             <div class="rating-card-edit-delete">
-                <i class='bx bxs-trash' ></i>
+                <i class='bx bxs-trash' hx-delete="/rating/delete/{{ rating.id }}"></i>
                 <i class='bx bxs-pencil' ></i>
             </div>
             <div class="rating-card-date">{{ rating.datePublished }}</div>

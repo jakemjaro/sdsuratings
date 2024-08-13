@@ -1,8 +1,6 @@
 package com.sdsuratings.app.model;
 
 public class Professor {
-    private static int running_id = 1;
-
     private int id;
     private String firstName, lastName;
     private String department;
