@@ -57,4 +57,23 @@ public class ProfessorService {
         professorList.forEach(professor -> setAverages(professor));
         return professorList;
     }
+
+    public List<Professor> getAllProfessorsSorted(int filter, String department) {
+        String filterQuery;
+        String departmentQuery = (!department.equals("all")) ? " WHERE department = '" + department + "'" : "";
+
+        if (filter == 1) {
+            filterQuery = "first_name ASC";
+        } else if (filter == 2) {
+            filterQuery = "last_name ASC";
+        } else if (filter == 3) {
+            filterQuery = "first_name DESC";
+        } else {
+            filterQuery = "last_name DESC";
+        }
+
+        List<Professor> professorList = professorRepository.findAllSorted(filterQuery, departmentQuery);
+        professorList.forEach(professor -> setAverages(professor));
+        return professorList;
+    }
 }

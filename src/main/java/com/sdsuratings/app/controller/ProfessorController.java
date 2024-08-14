@@ -1,5 +1,6 @@
 package com.sdsuratings.app.controller;
 
+import com.sdsuratings.app.model.Professor;
 import com.sdsuratings.app.service.ProfessorService;
 import com.sdsuratings.app.service.RatingService;
 import io.pebbletemplates.pebble.PebbleEngine;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -58,13 +60,21 @@ public class ProfessorController {
 
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
-    String all(Model model, HttpServletRequest request) throws IOException {
-        model.addAttribute("allProfessors", professorService.getAllProfessors());
+    String list(Model model, HttpServletRequest request) throws IOException {
+        model.addAttribute("professorList", professorService.getAllProfessors());
 
         if (request.getHeader("HX-request") != null) {
-            return render(new StringWriter(), "professorList", model.asMap());
+            return render(new StringWriter(), "professorListPage", model.asMap());
         } else {
-            return render(new StringWriter(), "fullProfessorList", model.asMap());
+            return render(new StringWriter(), "fullProfessorListPage", model.asMap());
         }
+    }
+
+    @GetMapping("/list/sort")
+    @ResponseStatus(HttpStatus.OK)
+    String sort(Model model, @RequestParam("filter") int filter, @RequestParam("department") String department) throws IOException {
+        model.addAttribute("professorList", professorService.getAllProfessorsSorted(filter, department));
+
+        return render(new StringWriter(), "professorList", model.asMap());
     }
 }

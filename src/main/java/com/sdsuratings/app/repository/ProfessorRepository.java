@@ -14,4 +14,6 @@ public interface ProfessorRepository {
     List<Professor> findByNameContainsLimited(String sequence, int limit);
 
     List<Professor> findAllByNameContains(String sequence);
+
+    List<Professor> findAllSorted(String filterQuery, String departmentQuery);
 }

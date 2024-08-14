@@ -1,4 +1,4 @@
 {% extends "home" %}
 {% block "main" %}
-{% include "professorList" %}
+{% include "professorListPage" %}
 {% endblock %}

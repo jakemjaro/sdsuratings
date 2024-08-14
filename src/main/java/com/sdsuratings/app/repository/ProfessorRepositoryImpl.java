@@ -28,7 +28,16 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     @Override
     public List<Professor> findAll() {
-        String sqlQuery = "SELECT * FROM professors";
+        String sqlQuery = "SELECT * FROM professors ORDER BY last_name ASC";
+
+        return jdbcClient.sql(sqlQuery)
+                .query(Professor.class)
+                .list();
+    }
+
+    @Override
+    public List<Professor> findAllSorted(String filterQuery, String departmentQuery) {
+        String sqlQuery = "SELECT * FROM professors" + departmentQuery + " ORDER BY " + filterQuery;
 
         return jdbcClient.sql(sqlQuery)
                 .query(Professor.class)
@@ -57,9 +66,9 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         }
 
         if (splitArray.length >= 2) {
-            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%') LIMIT " + limit;
+            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%') ORDER BY last_name ASC LIMIT " + limit;
         } else {
-            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' LIMIT " + limit;
+            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' ORDER BY last_name ASC LIMIT " + limit;
         }
 
         return jdbcClient.sql(sqlQuery)
@@ -79,9 +88,9 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         }
 
         if (splitArray.length >= 2) {
-            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%')";
+            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%') ORDER BY last_name ASC";
         } else {
-            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%'";
+            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' ORDER BY last_name ASC";
         }
 
         List<Professor> professorList = Collections.emptyList();

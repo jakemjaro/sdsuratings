@@ -66,11 +66,8 @@ public class RatingController {
 
         ratingService.addRating(new Rating(-1, professorId, quality, difficulty, fullCourse, grade, LocalDate.now(), description, accessibility, workload, classType));
 
-        Professor professor = professorService.getProfessor(professorId);
-        List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
-
-        model.addAttribute("professor", professor);
-        model.addAttribute("ratingList", ratingList);
+        model.addAttribute("professor", professorService.getProfessor(professorId));
+        model.addAttribute("ratingList", ratingService.getRatingsForProfessor(professorId));
 
         return render(new StringWriter(), "professorPage", model.asMap());
     }
@@ -82,11 +79,8 @@ public class RatingController {
 
         ratingService.deleteRating(id);
 
-        Professor professor = professorService.getProfessor(professorId);
-        List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
-
-        model.addAttribute("professor", professor);
-        model.addAttribute("ratingList", ratingList);
+        model.addAttribute("professor", professorService.getProfessor(professorId));
+        model.addAttribute("ratingList", ratingService.getRatingsForProfessor(professorId));
 
         return render(new StringWriter(), "professorPage", model.asMap());
     }
@@ -94,8 +88,7 @@ public class RatingController {
     @GetMapping("/edit/form/{id}")
     @ResponseStatus(HttpStatus.OK)
     String editForm(Model model, @PathVariable int id) throws IOException {
-        Rating rating = ratingService.getRating(id);
-        model.addAttribute("rating", rating);
+        model.addAttribute("rating", ratingService.getRating(id));
 
         return render(new StringWriter(), "ratingEditForm", model.asMap());
     }
@@ -112,14 +105,9 @@ public class RatingController {
 
         ratingService.updateRating(new Rating(id, professorId, quality, difficulty, fullCourse, grade, LocalDate.now(), description, accessibility, workload, classType));
 
-        Professor professor = professorService.getProfessor(professorId);
-        List<Rating> ratingList = ratingService.getRatingsForProfessor(professorId);
-
-        model.addAttribute("professor", professor);
-        model.addAttribute("ratingList", ratingList);
+        model.addAttribute("professor", professorService.getProfessor(professorId));
+        model.addAttribute("ratingList", ratingService.getRatingsForProfessor(professorId));
 
         return render(new StringWriter(), "professorPage", model.asMap());
     }
-
-
 }
