@@ -27,6 +27,11 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     }
 
     @Override
+    public boolean exists(Professor professor) {
+        return false;
+    }
+
+    @Override
     public List<Professor> findAll() {
         String sqlQuery = "SELECT * FROM professors ORDER BY last_name ASC";
 

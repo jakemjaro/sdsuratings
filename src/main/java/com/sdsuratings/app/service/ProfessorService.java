@@ -22,8 +22,14 @@ public class ProfessorService {
         professor.setAverageDifficulty(ratingService.getAverageDifficultyForProfessor(professor.getId()));
     }
 
-    public void addProfessor(Professor professor) {
+    public boolean addProfessor(Professor professor) {
+        if (professorRepository.exists(professor)) {
+            return false;
+        }
+
         professorRepository.create(professor);
+
+        return true;
     }
 
     public List<Professor> getAllProfessors() {

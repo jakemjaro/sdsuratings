@@ -7,6 +7,8 @@ import java.util.List;
 public interface ProfessorRepository {
     void create(Professor professor);
 
+    boolean exists(Professor professor);
+
     List<Professor> findAll();
 
     Professor findById(int id);

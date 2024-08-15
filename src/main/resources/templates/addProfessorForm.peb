@@ -1,17 +1,8 @@
-<div class="professor-list-page-container">
-    <div class="professor-list-add-container">
-        {% include "addProfessorButton" %}
-    </div>
-    <form class="professor-list-sort-form" hx-get="/professor/list/sort" hx-target=".list-of-professors">
-        <label for="filter">Sort By: </label>
-        <select name="filter" id="filter">
-            <option value="1">First Name (A-Z)</option>
-            <option value="2" selected>Last Name (A-Z)</option>
-            <option value="3">First Name (Z-A)</option>
-            <option value="4">Last Name (Z-A)</option>
-        </select>
-        <select name="department" id="sort-department" required>
-            <option value="all" selected>All Departments</option>
+<form class="add-professor-form" hx-post="/professor/add" hx-swap="outerHTML">
+    <div class="add-professor-form-fields">
+        <input type="text" name="first-name" placeholder="First Name" autocomplete="off" required>
+        <input type="text" name="last-name" placeholder="Last Name" autocomplete="off" required>
+        <select name="department" id="add-professor-department">
             <option value="A S">A S</option>
             <option value="ACCTG">ACCTG</option>
             <option value="AFRAS">AFRAS</option>
@@ -133,9 +124,9 @@
             <option value="THEA">THEA</option>
             <option value="WMNST">WMNST</option>
         </select>
-        <button type="submit"><i class='bx bx-right-arrow-alt'></i></button>
-    </form>
-    <div class="list-of-professors">
-        {% include "professorList" %}
     </div>
-</div>
+    <div class="add-professor-form-buttons">
+        <button id="add-professor-form-cancel" hx-get="/professor/button" hx-target=".add-professor-form" hx-swap="outerHTML">Cancel</button>
+        <button type="submit" id="add-professor-form-submit">Add</button>
+    </div>
+</form>

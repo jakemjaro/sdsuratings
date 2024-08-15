@@ -1,0 +1,1 @@
+<button id="professor-list-add-button" hx-get="/professor/form" hx-swap="outerHTML">Add Professor</button>

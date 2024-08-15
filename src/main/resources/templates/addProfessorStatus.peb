@@ -1,0 +1,7 @@
+<div class="add-professor-status">
+{% if status %}
+    <h2>Success <i class='bx bx-check' style="color: #08bd02;"></i></h2>
+{% else %}
+    <h2>Already Exists <i class='bx bxs-error-alt' style="color: #c4022f;"></i></h2>
+{% endif %}
+</div>

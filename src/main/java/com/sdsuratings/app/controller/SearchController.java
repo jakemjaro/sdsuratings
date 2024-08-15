@@ -1,7 +1,6 @@
 package com.sdsuratings.app.controller;
 
 import com.sdsuratings.app.model.Professor;
-import com.sdsuratings.app.repository.PracticeRepository;
 import com.sdsuratings.app.service.ProfessorService;
 import com.sdsuratings.app.service.RatingService;
 import io.pebbletemplates.pebble.PebbleEngine;
@@ -22,13 +21,11 @@ import java.util.Map;
 @RequestMapping("/search")
 public class SearchController {
     private final PebbleEngine pebbleEngine;
-    private PracticeRepository practiceRepository;
     private ProfessorService professorService;
     private RatingService ratingService;
 
-    public SearchController(PebbleEngine pebbleEngine, PracticeRepository practiceRepository, ProfessorService professorService, RatingService ratingService) {
+    public SearchController(PebbleEngine pebbleEngine, ProfessorService professorService, RatingService ratingService) {
         this.pebbleEngine = pebbleEngine;
-        this.practiceRepository = practiceRepository;
         this.professorService = professorService;
         this.ratingService = ratingService;
     }

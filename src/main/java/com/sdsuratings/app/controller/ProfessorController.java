@@ -77,4 +77,32 @@ public class ProfessorController {
 
         return render(new StringWriter(), "professorList", model.asMap());
     }
+
+    @GetMapping("/form")
+    @ResponseStatus(HttpStatus.OK)
+    String form() throws IOException {
+        return render(new StringWriter(), "addProfessorForm");
+    }
+
+    @GetMapping("/button")
+    @ResponseStatus(HttpStatus.OK)
+    String button() throws IOException {
+        return render(new StringWriter(), "addProfessorButton");
+    }
+
+    @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    String add(Model model, @RequestParam("first-name") String firstName, @RequestParam("last-name") String lastName, @RequestParam("department") String department) throws IOException {
+        String firstLetterFN = firstName.substring(0,1).toUpperCase();
+        String formattedFN = firstLetterFN + firstName.substring(1);
+
+        String firstLetterLN = lastName.substring(0,1).toUpperCase();
+        String formattedLN = firstLetterLN + lastName.substring(1);
+
+        boolean status = professorService.addProfessor(new Professor(-1, formattedFN, formattedLN, department));
+
+        model.addAttribute("status", status);
+
+        return render(new StringWriter(), "addProfessorStatus", model.asMap());
+    }
 }
