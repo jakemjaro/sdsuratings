@@ -24,6 +24,10 @@ public class RatingService {
     }
 
     public List<Rating> getRatingsForProfessorCourse(int professorId, String course) {
+        if (course.equals("all")) {
+            return getRatingsForProfessor(professorId);
+        }
+
         return ratingRepository.findAllByCourseByProfessorId(professorId, course);
     }
 

@@ -15,6 +15,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,20 @@ public class RatingController {
         return writer.toString();
     }
 
+    public void loadProfessorPageData(Model model, int id) {
+        Professor professor = professorService.getProfessor(id);
+        List<Rating> ratingList = ratingService.getRatingsForProfessor(id);
+
+        HashSet<String> courseList = new HashSet<>();
+        for (Rating r : ratingList) {
+            courseList.add(r.getCourse());
+        }
+
+        model.addAttribute("professor", professor);
+        model.addAttribute("ratingList", ratingList);
+        model.addAttribute("courseList", courseList);
+    }
+
     @GetMapping("/form/{professorId}")
     @ResponseStatus(HttpStatus.OK)
     String form(Model model, @PathVariable int professorId) throws IOException {
@@ -66,8 +81,7 @@ public class RatingController {
 
         ratingService.addRating(new Rating(-1, professorId, quality, difficulty, fullCourse, grade, LocalDate.now(), description, accessibility, workload, classType));
 
-        model.addAttribute("professor", professorService.getProfessor(professorId));
-        model.addAttribute("ratingList", ratingService.getRatingsForProfessor(professorId));
+        loadProfessorPageData(model, professorId);
 
         return render(new StringWriter(), "professorPage", model.asMap());
     }
@@ -79,8 +93,7 @@ public class RatingController {
 
         ratingService.deleteRating(id);
 
-        model.addAttribute("professor", professorService.getProfessor(professorId));
-        model.addAttribute("ratingList", ratingService.getRatingsForProfessor(professorId));
+        loadProfessorPageData(model, professorId);
 
         return render(new StringWriter(), "professorPage", model.asMap());
     }
@@ -105,9 +118,16 @@ public class RatingController {
 
         ratingService.updateRating(new Rating(id, professorId, quality, difficulty, fullCourse, grade, LocalDate.now(), description, accessibility, workload, classType));
 
-        model.addAttribute("professor", professorService.getProfessor(professorId));
-        model.addAttribute("ratingList", ratingService.getRatingsForProfessor(professorId));
+        loadProfessorPageData(model, professorId);
 
         return render(new StringWriter(), "professorPage", model.asMap());
+    }
+
+    @GetMapping("/filter/{professorId}")
+    @ResponseStatus(HttpStatus.OK)
+    String filter(Model model, @PathVariable int professorId, @RequestParam("course") String course) throws IOException {
+        model.addAttribute("ratingList", ratingService.getRatingsForProfessorCourse(professorId, course));
+
+        return render(new StringWriter(), "ratingList", model.asMap());
     }
 }

@@ -17,9 +17,18 @@
 
     <div class="professor-page-right">
     {% if ratingList is not empty %}
-        {% for rating in ratingList %}
-        {% include "ratingCard" %}
-        {% endfor %}
+        <form class="professor-page-sort-form" hx-get="/rating/filter/{{ professor.id }}" hx-target=".professor-page-right-ratings">
+            <select name="course" id="professor-page-sort-select">
+                <option value="all">All Courses</option>
+            {% for course in courseList %}
+                <option value="{{ course }}">{{ course }}</option>
+            {% endfor %}
+            </select>
+            <button type="submit" id="professor-page-sort-form-button">Filter</button>
+        </form>
+        <div class="professor-page-right-ratings">
+            {% include "ratingList" %}
+        </div>
         <div class="hidden-cushion"></div>
     {% else %}
         <div class="no-ratings-message">

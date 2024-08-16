@@ -1,0 +1,3 @@
+{% for rating in ratingList %}
+{% include "ratingCard" %}
+{% endfor %}

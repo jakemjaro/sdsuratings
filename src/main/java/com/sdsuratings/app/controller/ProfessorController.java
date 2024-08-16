@@ -1,6 +1,7 @@
 package com.sdsuratings.app.controller;
 
 import com.sdsuratings.app.model.Professor;
+import com.sdsuratings.app.model.Rating;
 import com.sdsuratings.app.service.ProfessorService;
 import com.sdsuratings.app.service.RatingService;
 import io.pebbletemplates.pebble.PebbleEngine;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -45,11 +47,24 @@ public class ProfessorController {
         return writer.toString();
     }
 
+    public void loadProfessorPageData(Model model, int id) {
+        Professor professor = professorService.getProfessor(id);
+        List<Rating> ratingList = ratingService.getRatingsForProfessor(id);
+
+        HashSet<String> courseList = new HashSet<>();
+        for (Rating r : ratingList) {
+            courseList.add(r.getCourse());
+        }
+
+        model.addAttribute("professor", professor);
+        model.addAttribute("ratingList", ratingList);
+        model.addAttribute("courseList", courseList);
+    }
+
     @GetMapping("/profile/{id}")
     @ResponseStatus(HttpStatus.OK)
     String profile(Model model, @PathVariable("id") int id, HttpServletRequest request) throws IOException {
-        model.addAttribute("professor", professorService.getProfessor(id));
-        model.addAttribute("ratingList", ratingService.getRatingsForProfessor(id));
+        loadProfessorPageData(model, id);
 
         if (request.getHeader("HX-request") != null) {
             return render(new StringWriter(), "professorPage", model.asMap());

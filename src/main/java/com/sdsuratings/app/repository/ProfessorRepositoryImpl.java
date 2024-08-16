@@ -35,7 +35,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
                 .query(Professor.class)
                 .list();
 
-        return professorList.size() > 0;
+        return !professorList.isEmpty();
     }
 
     @Override
