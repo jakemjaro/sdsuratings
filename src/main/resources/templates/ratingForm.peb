@@ -1,5 +1,5 @@
 <div class="rating-form-container">
-    <form class="rating-form" hx-post="/rating/add/{{ professorId }}" hx-target=".main-container">
+    <form class="rating-form" hx-post="/rating/add/{{ professorId }}" hx-target=".main-container" onsubmit="removeRatingFormDelayed()">
         <div class="rating-form-header">
             <h2>Add a Rating</h2>
         </div>
@@ -208,7 +208,7 @@
 
         <div class="rating-form-buttons">
             <button type="button" class="rating-form-cancel" onclick="removeRatingForm()">Cancel</button>
-            <button type="submit" class="rating-form-submit" onclick="removeRatingFormDelayed()">Submit</button>
+            <button type="submit" class="rating-form-submit">Submit</button>
         </div>
     </form>
 </div>
