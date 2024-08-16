@@ -28,7 +28,14 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     @Override
     public boolean exists(Professor professor) {
-        return false;
+        String sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE ?) AND (last_name ILIKE ?) AND (department = ?)";
+
+        List<Professor> professorList = jdbcClient.sql(sqlQuery)
+                .params(professor.getFirstName(), professor.getLastName(), professor.getDepartment())
+                .query(Professor.class)
+                .list();
+
+        return professorList.size() > 0;
     }
 
     @Override

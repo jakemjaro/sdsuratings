@@ -95,9 +95,11 @@ public class ProfessorController {
     String add(Model model, @RequestParam("first-name") String firstName, @RequestParam("last-name") String lastName, @RequestParam("department") String department) throws IOException {
         String firstLetterFN = firstName.substring(0,1).toUpperCase();
         String formattedFN = firstLetterFN + firstName.substring(1);
+        formattedFN = formattedFN.trim();
 
         String firstLetterLN = lastName.substring(0,1).toUpperCase();
         String formattedLN = firstLetterLN + lastName.substring(1);
+        formattedLN = formattedLN.trim();
 
         boolean status = professorService.addProfessor(new Professor(-1, formattedFN, formattedLN, department));
 
