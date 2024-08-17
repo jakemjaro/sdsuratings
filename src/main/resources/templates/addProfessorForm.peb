@@ -127,6 +127,6 @@
     </div>
     <div class="add-professor-form-buttons">
         <button id="add-professor-form-cancel" hx-get="/professor/button" hx-target=".add-professor-form" hx-swap="outerHTML">Cancel</button>
-        <button type="submit" id="add-professor-form-submit">Add</button>
+        <button type="submit" id="add-professor-form-submit">Submit</button>
     </div>
 </form>
