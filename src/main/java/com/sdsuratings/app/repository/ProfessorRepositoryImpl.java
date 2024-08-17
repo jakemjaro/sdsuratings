@@ -48,15 +48,6 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     }
 
     @Override
-    public List<Professor> findAllSorted(String filterQuery, String departmentQuery) {
-        String sqlQuery = "SELECT * FROM professors" + departmentQuery + " ORDER BY " + filterQuery;
-
-        return jdbcClient.sql(sqlQuery)
-                .query(Professor.class)
-                .list();
-    }
-
-    @Override
     public Professor findById(int id) {
         String sqlQuery = "SELECT * FROM professors WHERE id = ?";
 
@@ -105,9 +96,61 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
             sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' ORDER BY last_name ASC";
         }
 
+        return jdbcClient.sql(sqlQuery)
+                .query(Professor.class)
+                .list();
+    }
+
+    @Override
+    public List<Professor> findAllSorted(String filterQuery, String departmentQuery) {
+        String sqlQuery = "SELECT * FROM professors" + departmentQuery + " ORDER BY " + filterQuery;
+
+        return jdbcClient.sql(sqlQuery)
+                .query(Professor.class)
+                .list();
+    }
+
+    @Override
+    public List<Professor> findAllOffset(int offset) {
+        String sqlQuery = "SELECT * FROM professors ORDER BY last_name ASC LIMIT 20 OFFSET ?";
+
+        return jdbcClient.sql(sqlQuery)
+                .param(offset)
+                .query(Professor.class)
+                .list();
+    }
+
+    @Override
+    public List<Professor> findAllByNameContainsOffset(String sequence, int offset) {
+        sequence = sequence.trim();
+
+        String[] splitArray = {};
+        String sqlQuery = "";
+
+        if (sequence.contains("\s")) {
+            splitArray = sequence.split("\s+");
+        }
+
+        if (splitArray.length >= 2) {
+            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%') ORDER BY last_name ASC LIMIT 20 OFFSET ?";
+        } else {
+            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' ORDER BY last_name ASC LIMIT 20 OFFSET ?";
+        }
+
         List<Professor> professorList = Collections.emptyList();
 
         return jdbcClient.sql(sqlQuery)
+                .param(offset)
+                .query(Professor.class)
+                .list();
+    }
+
+    @Override
+    public List<Professor> findAllSortedOffset(String filterQuery, String departmentQuery, int offset) {
+        String sqlQuery = "SELECT * FROM professors" + departmentQuery + " ORDER BY " + filterQuery + " LIMIT 20 OFFSET ?";
+
+        return jdbcClient.sql(sqlQuery)
+                .param(offset)
                 .query(Professor.class)
                 .list();
     }

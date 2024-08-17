@@ -82,4 +82,39 @@ public class ProfessorService {
         professorList.forEach(professor -> setAverages(professor));
         return professorList;
     }
+
+    public List<Professor> getAllProfessorsOffset(int offset) {
+        List<Professor> professorList = professorRepository.findAllOffset(offset);
+        professorList.forEach(professor -> setAverages(professor));
+        return professorList;
+    }
+
+    public List<Professor> searchProfessorsOffset(String sequence, int offset) {
+        if (sequence.contains("\'") || sequence.contains("\"")) {
+            return Collections.emptyList();
+        }
+
+        List<Professor> professorList = professorRepository.findAllByNameContainsOffset(sequence, offset);
+        professorList.forEach(professor -> setAverages(professor));
+        return professorList;
+    }
+
+    public List<Professor> getAllProfessorsSortedOffset(int filter, String department, int offset) {
+        String filterQuery;
+        String departmentQuery = (!department.equals("all")) ? " WHERE department = '" + department + "'" : "";
+
+        if (filter == 1) {
+            filterQuery = "first_name ASC";
+        } else if (filter == 2) {
+            filterQuery = "last_name ASC";
+        } else if (filter == 3) {
+            filterQuery = "first_name DESC";
+        } else {
+            filterQuery = "last_name DESC";
+        }
+
+        List<Professor> professorList = professorRepository.findAllSortedOffset(filterQuery, departmentQuery, offset);
+        professorList.forEach(professor -> setAverages(professor));
+        return professorList;
+    }
 }

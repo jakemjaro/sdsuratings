@@ -60,4 +60,16 @@ public class RatingService {
     public void updateRating(Rating rating) {
         ratingRepository.update(rating);
     }
+
+    public List<Rating> getRatingsForProfessorOffset(int professorId, int offset) {
+        return ratingRepository.findAllByProfessorIdOffset(professorId, offset);
+    }
+
+    public List<Rating> getRatingsForProfessorCourseOffset(int professorId, String course, int offset) {
+        if (course.equals("all")) {
+            return getRatingsForProfessorOffset(professorId, offset);
+        }
+
+        return ratingRepository.findAllByCourseByProfessorIdOffset(professorId, course, offset);
+    }
 }

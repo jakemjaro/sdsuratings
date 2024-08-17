@@ -75,4 +75,24 @@ public class RatingRepositoryImpl implements RatingRepository {
                 .params(rating.getQuality(), rating.getDifficulty(), rating.getCourse(), rating.getGrade(), rating.getDatePublished(), rating.getDescription(), rating.getAccessibility(), rating.getWorkload(), rating.getClassType(), rating.getId())
                 .update();
     }
+
+    @Override
+    public List<Rating> findAllByProfessorIdOffset(int professorId, int offset) {
+        String sqlQuery = "SELECT * FROM ratings WHERE professor_id = ? ORDER BY date_published DESC, id DESC LIMIT 20 OFFSET ?";
+
+        return jdbcClient.sql(sqlQuery)
+                .params(professorId, offset)
+                .query(Rating.class)
+                .list();
+    }
+
+    @Override
+    public List<Rating> findAllByCourseByProfessorIdOffset(int professorId, String course, int offset) {
+        String sqlQuery = "SELECT * FROM ratings WHERE (professor_id = ?) AND (course = ?) ORDER BY date_published DESC, id DESC LIMIT 20 OFFSET ?";
+
+        return jdbcClient.sql(sqlQuery)
+                .params(professorId, course, offset)
+                .query(Rating.class)
+                .list();
+    }
 }

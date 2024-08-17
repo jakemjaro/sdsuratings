@@ -18,4 +18,10 @@ public interface ProfessorRepository {
     List<Professor> findAllByNameContains(String sequence);
 
     List<Professor> findAllSorted(String filterQuery, String departmentQuery);
+
+    List<Professor> findAllOffset(int offset);
+
+    List<Professor> findAllByNameContainsOffset(String sequence, int offset);
+
+    List<Professor> findAllSortedOffset(String filterQuery, String departmentQuery, int offset);
 }

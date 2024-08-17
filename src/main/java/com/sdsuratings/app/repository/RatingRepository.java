@@ -16,4 +16,8 @@ public interface RatingRepository {
     void deleteById(int id);
 
     void update(Rating rating);
+
+    List<Rating> findAllByProfessorIdOffset(int professorId, int offset);
+
+    List<Rating> findAllByCourseByProfessorIdOffset(int professorId, String course, int offset);
 }
