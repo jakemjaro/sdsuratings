@@ -5,7 +5,7 @@
     </div>
     {% block "info" %}
     <div class="professor-card-info">
-        <div class="professor-card-rating"><strong>Rating: &nbsp;</strong>{{ professor.averageQuality }} <i class='bx bxs-star'></i></div>
+        <div class="professor-card-rating"><strong>Quality: &nbsp;</strong>{{ professor.averageQuality }} <i class='bx bxs-star'></i></div>
         <div class="professor-card-difficulty"><strong>Difficulty: &nbsp;</strong>{{ professor.averageDifficulty }}</div>
     </div>
     {% endblock %}

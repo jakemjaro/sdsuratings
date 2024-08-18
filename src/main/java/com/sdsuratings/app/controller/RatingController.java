@@ -52,16 +52,18 @@ public class RatingController {
 
     public void loadProfessorPageData(Model model, int id) {
         Professor professor = professorService.getProfessor(id);
-        List<Rating> ratingList = ratingService.getRatingsForProfessor(id);
+        List<Rating> ratingList = ratingService.getRatingsForProfessorOffset(id, 0);
 
         HashSet<String> courseList = new HashSet<>();
-        for (Rating r : ratingList) {
+        for (Rating r : ratingService.getRatingsForProfessor(id)) {
             courseList.add(r.getCourse());
         }
 
         model.addAttribute("professor", professor);
         model.addAttribute("ratingList", ratingList);
         model.addAttribute("courseList", courseList);
+        model.addAttribute("offset", Constants.OFFSET_FACTOR);
+        model.addAttribute("professorId", id);
     }
 
     @GetMapping("/form/{professorId}")
