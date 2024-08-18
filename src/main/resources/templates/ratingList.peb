@@ -1,3 +1,6 @@
 {% for rating in ratingList %}
-{% include "ratingCard" %}
+    {% include "ratingCard" %}
 {% endfor %}
+{% if ratingList is not empty %}
+<div class="load-more-content" hx-get="/rating/{{ professorId }}/{{ offset }}" hx-trigger="intersect once" hx-swap="outerHTML"></div>
+{% endif %}

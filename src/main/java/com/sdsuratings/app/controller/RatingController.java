@@ -123,11 +123,35 @@ public class RatingController {
         return render(new StringWriter(), "professorPage", model.asMap());
     }
 
+    @GetMapping("/{professorId}/{offset}")
+    @ResponseStatus(HttpStatus.OK)
+    String allOffset(Model model, @PathVariable("professorId") int professorId, @PathVariable("offset") int offset) throws IOException {
+        model.addAttribute("ratingList", ratingService.getRatingsForProfessorOffset(professorId, offset));
+        model.addAttribute("offset", offset + 20);
+        model.addAttribute("professorId", professorId);
+
+        return render(new StringWriter(), "ratingList", model.asMap());
+    }
+
     @GetMapping("/filter/{professorId}")
     @ResponseStatus(HttpStatus.OK)
     String filter(Model model, @PathVariable int professorId, @RequestParam("course") String course) throws IOException {
-        model.addAttribute("ratingList", ratingService.getRatingsForProfessorCourse(professorId, course));
+        model.addAttribute("ratingList", ratingService.getRatingsForProfessorCourseOffset(professorId, course, 0));
+        model.addAttribute("offset", 20);
+        model.addAttribute("course", course);
+        model.addAttribute("professorId", professorId);
 
-        return render(new StringWriter(), "ratingList", model.asMap());
+        return render(new StringWriter(), "ratingListSorted", model.asMap());
+    }
+
+    @GetMapping("/filter/{professorId}/{offset}")
+    @ResponseStatus(HttpStatus.OK)
+    String filterOffset(Model model, @PathVariable("professorId") int professorId, @RequestParam("course") String course, @PathVariable("offset") int offset) throws IOException {
+        model.addAttribute("ratingList", ratingService.getRatingsForProfessorCourseOffset(professorId, course, offset));
+        model.addAttribute("offset", offset + 20);
+        model.addAttribute("course", course);
+        model.addAttribute("professorId", professorId);
+
+        return render(new StringWriter(), "ratingListSorted", model.asMap());
     }
 }
