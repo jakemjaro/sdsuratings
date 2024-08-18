@@ -1,6 +1,7 @@
 package com.sdsuratings.app.repository;
 
 import com.sdsuratings.app.model.Rating;
+import com.sdsuratings.app.util.Constants;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -78,20 +79,20 @@ public class RatingRepositoryImpl implements RatingRepository {
 
     @Override
     public List<Rating> findAllByProfessorIdOffset(int professorId, int offset) {
-        String sqlQuery = "SELECT * FROM ratings WHERE professor_id = ? ORDER BY date_published DESC, id DESC LIMIT 20 OFFSET ?";
+        String sqlQuery = "SELECT * FROM ratings WHERE professor_id = ? ORDER BY date_published DESC, id DESC LIMIT ? OFFSET ?";
 
         return jdbcClient.sql(sqlQuery)
-                .params(professorId, offset)
+                .params(professorId, Constants.OFFSET_FACTOR, offset)
                 .query(Rating.class)
                 .list();
     }
 
     @Override
     public List<Rating> findAllByCourseByProfessorIdOffset(int professorId, String course, int offset) {
-        String sqlQuery = "SELECT * FROM ratings WHERE (professor_id = ?) AND (course = ?) ORDER BY date_published DESC, id DESC LIMIT 20 OFFSET ?";
+        String sqlQuery = "SELECT * FROM ratings WHERE (professor_id = ?) AND (course = ?) ORDER BY date_published DESC, id DESC LIMIT ? OFFSET ?";
 
         return jdbcClient.sql(sqlQuery)
-                .params(professorId, course, offset)
+                .params(professorId, course, Constants.OFFSET_FACTOR, offset)
                 .query(Rating.class)
                 .list();
     }

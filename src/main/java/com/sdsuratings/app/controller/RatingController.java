@@ -4,6 +4,7 @@ import com.sdsuratings.app.model.Professor;
 import com.sdsuratings.app.model.Rating;
 import com.sdsuratings.app.service.ProfessorService;
 import com.sdsuratings.app.service.RatingService;
+import com.sdsuratings.app.util.Constants;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import org.springframework.http.HttpStatus;
@@ -127,7 +128,7 @@ public class RatingController {
     @ResponseStatus(HttpStatus.OK)
     String allOffset(Model model, @PathVariable("professorId") int professorId, @PathVariable("offset") int offset) throws IOException {
         model.addAttribute("ratingList", ratingService.getRatingsForProfessorOffset(professorId, offset));
-        model.addAttribute("offset", offset + 20);
+        model.addAttribute("offset", offset + Constants.OFFSET_FACTOR);
         model.addAttribute("professorId", professorId);
 
         return render(new StringWriter(), "ratingList", model.asMap());
@@ -137,7 +138,7 @@ public class RatingController {
     @ResponseStatus(HttpStatus.OK)
     String filter(Model model, @PathVariable int professorId, @RequestParam("course") String course) throws IOException {
         model.addAttribute("ratingList", ratingService.getRatingsForProfessorCourseOffset(professorId, course, 0));
-        model.addAttribute("offset", 20);
+        model.addAttribute("offset", Constants.OFFSET_FACTOR);
         model.addAttribute("course", course);
         model.addAttribute("professorId", professorId);
 
@@ -148,7 +149,7 @@ public class RatingController {
     @ResponseStatus(HttpStatus.OK)
     String filterOffset(Model model, @PathVariable("professorId") int professorId, @RequestParam("course") String course, @PathVariable("offset") int offset) throws IOException {
         model.addAttribute("ratingList", ratingService.getRatingsForProfessorCourseOffset(professorId, course, offset));
-        model.addAttribute("offset", offset + 20);
+        model.addAttribute("offset", offset + Constants.OFFSET_FACTOR);
         model.addAttribute("course", course);
         model.addAttribute("professorId", professorId);
 

@@ -3,6 +3,7 @@ package com.sdsuratings.app.controller;
 import com.sdsuratings.app.model.Professor;
 import com.sdsuratings.app.service.ProfessorService;
 import com.sdsuratings.app.service.RatingService;
+import com.sdsuratings.app.util.Constants;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import jakarta.servlet.http.HttpServletRequest;
@@ -68,7 +69,7 @@ public class SearchController {
         }
 
         model.addAttribute("matches", matches);
-        model.addAttribute("offset", 20);
+        model.addAttribute("offset", Constants.OFFSET_FACTOR);
         model.addAttribute("query", query);
 
         if (request.getHeader("HX-request") != null) {
@@ -87,7 +88,7 @@ public class SearchController {
         }
 
         model.addAttribute("matches", matches);
-        model.addAttribute("offset", offset + 20);
+        model.addAttribute("offset", offset + Constants.OFFSET_FACTOR);
         model.addAttribute("query", query);
 
         return render(new StringWriter(), "searchResults", model.asMap());

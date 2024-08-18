@@ -4,6 +4,7 @@ import com.sdsuratings.app.model.Professor;
 import com.sdsuratings.app.model.Rating;
 import com.sdsuratings.app.service.ProfessorService;
 import com.sdsuratings.app.service.RatingService;
+import com.sdsuratings.app.util.Constants;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.template.PebbleTemplate;
 import jakarta.servlet.http.HttpServletRequest;
@@ -59,7 +60,7 @@ public class ProfessorController {
         model.addAttribute("professor", professor);
         model.addAttribute("ratingList", ratingList);
         model.addAttribute("courseList", courseList);
-        model.addAttribute("offset", 20);
+        model.addAttribute("offset", Constants.OFFSET_FACTOR);
         model.addAttribute("professorId", id);
     }
 
@@ -79,7 +80,7 @@ public class ProfessorController {
     @ResponseStatus(HttpStatus.OK)
     String list(Model model, HttpServletRequest request) throws IOException {
         model.addAttribute("professorList", professorService.getAllProfessorsOffset(0));
-        model.addAttribute("offset", 20);
+        model.addAttribute("offset", Constants.OFFSET_FACTOR);
 
         if (request.getHeader("HX-request") != null) {
             return render(new StringWriter(), "professorListPage", model.asMap());
@@ -92,7 +93,7 @@ public class ProfessorController {
     @ResponseStatus(HttpStatus.OK)
     String listOffset(Model model, @PathVariable int offset) throws IOException {
         model.addAttribute("professorList", professorService.getAllProfessorsOffset(offset));
-        model.addAttribute("offset", offset + 20);
+        model.addAttribute("offset", offset + Constants.OFFSET_FACTOR);
 
         return render(new StringWriter(), "professorList", model.asMap());
     }
@@ -101,7 +102,7 @@ public class ProfessorController {
     @ResponseStatus(HttpStatus.OK)
     String sort(Model model, @RequestParam("filter") int filter, @RequestParam("department") String department) throws IOException {
         model.addAttribute("professorList", professorService.getAllProfessorsSortedOffset(filter, department, 0));
-        model.addAttribute("offset", 20);
+        model.addAttribute("offset", Constants.OFFSET_FACTOR);
         model.addAttribute("filter", filter);
         model.addAttribute("department", department);
 
@@ -112,7 +113,7 @@ public class ProfessorController {
     @ResponseStatus(HttpStatus.OK)
     String sortOffset(Model model, @RequestParam("filter") int filter, @RequestParam("department") String department, @PathVariable int offset) throws IOException {
         model.addAttribute("professorList", professorService.getAllProfessorsSortedOffset(filter, department, offset));
-        model.addAttribute("offset", offset + 20);
+        model.addAttribute("offset", offset + Constants.OFFSET_FACTOR);
         model.addAttribute("filter", filter);
         model.addAttribute("department", department);
 

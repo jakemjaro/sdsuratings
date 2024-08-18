@@ -2,8 +2,11 @@ package com.sdsuratings.app.repository;
 
 import com.sdsuratings.app.model.Professor;
 import com.sdsuratings.app.service.RatingService;
+import com.sdsuratings.app.util.Constants;
+import org.apache.tomcat.util.bcel.Const;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+import org.yaml.snakeyaml.scanner.Constant;
 
 import java.sql.SQLException;
 import java.util.Collections;
@@ -112,10 +115,10 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     @Override
     public List<Professor> findAllOffset(int offset) {
-        String sqlQuery = "SELECT * FROM professors ORDER BY last_name ASC LIMIT 20 OFFSET ?";
+        String sqlQuery = "SELECT * FROM professors ORDER BY last_name ASC LIMIT ? OFFSET ?";
 
         return jdbcClient.sql(sqlQuery)
-                .param(offset)
+                .params(Constants.OFFSET_FACTOR, offset)
                 .query(Professor.class)
                 .list();
     }
@@ -132,25 +135,25 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         }
 
         if (splitArray.length >= 2) {
-            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%') ORDER BY last_name ASC LIMIT 20 OFFSET ?";
+            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%') ORDER BY last_name ASC LIMIT ? OFFSET ?";
         } else {
-            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' ORDER BY last_name ASC LIMIT 20 OFFSET ?";
+            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' ORDER BY last_name ASC LIMIT ? OFFSET ?";
         }
 
         List<Professor> professorList = Collections.emptyList();
 
         return jdbcClient.sql(sqlQuery)
-                .param(offset)
+                .params(Constants.OFFSET_FACTOR, offset)
                 .query(Professor.class)
                 .list();
     }
 
     @Override
     public List<Professor> findAllSortedOffset(String filterQuery, String departmentQuery, int offset) {
-        String sqlQuery = "SELECT * FROM professors" + departmentQuery + " ORDER BY " + filterQuery + " LIMIT 20 OFFSET ?";
+        String sqlQuery = "SELECT * FROM professors" + departmentQuery + " ORDER BY " + filterQuery + " LIMIT ? OFFSET ?";
 
         return jdbcClient.sql(sqlQuery)
-                .param(offset)
+                .params(Constants.OFFSET_FACTOR, offset)
                 .query(Professor.class)
                 .list();
     }
