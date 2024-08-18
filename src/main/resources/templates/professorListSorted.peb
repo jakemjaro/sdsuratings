@@ -1,0 +1,7 @@
+{% for professor in professorList %}
+    {% include "professorCard" %}
+{% endfor %}
+{% if professorList is not empty %}
+<div class="load-more-content" hx-get="/professor/list/sort/{{ offset }}" hx-trigger="intersect once" hx-swap="outerHTML"
+     hx-vals='{"filter": "{{ filter }}", "department": "{{ department }}"}'></div>
+{% endif %}

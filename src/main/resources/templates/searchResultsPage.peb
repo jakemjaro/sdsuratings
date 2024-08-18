@@ -1,0 +1,10 @@
+<div class="search-results-container">
+{% if matches is not empty %}
+    {% include "searchResults" %}
+{% else %}
+    <div class="no-professors-message">
+        <div>No professors found.</div>
+        <span hx-get="/professor/list" hx-target=".main-container" hx-push-url="true">Add a professor?</span>
+    </div>
+{% endif %}
+</div>

@@ -76,7 +76,8 @@ public class ProfessorController {
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     String list(Model model, HttpServletRequest request) throws IOException {
-        model.addAttribute("professorList", professorService.getAllProfessors());
+        model.addAttribute("professorList", professorService.getAllProfessorsOffset(0));
+        model.addAttribute("offset", 20);
 
         if (request.getHeader("HX-request") != null) {
             return render(new StringWriter(), "professorListPage", model.asMap());
@@ -85,12 +86,35 @@ public class ProfessorController {
         }
     }
 
+    @GetMapping("/list/{offset}")
+    @ResponseStatus(HttpStatus.OK)
+    String listOffset(Model model, @PathVariable int offset) throws IOException {
+        model.addAttribute("professorList", professorService.getAllProfessorsOffset(offset));
+        model.addAttribute("offset", offset + 20);
+
+        return render(new StringWriter(), "professorList", model.asMap());
+    }
+
     @GetMapping("/list/sort")
     @ResponseStatus(HttpStatus.OK)
     String sort(Model model, @RequestParam("filter") int filter, @RequestParam("department") String department) throws IOException {
-        model.addAttribute("professorList", professorService.getAllProfessorsSorted(filter, department));
+        model.addAttribute("professorList", professorService.getAllProfessorsSortedOffset(filter, department, 0));
+        model.addAttribute("offset", 20);
+        model.addAttribute("filter", filter);
+        model.addAttribute("department", department);
 
-        return render(new StringWriter(), "professorList", model.asMap());
+        return render(new StringWriter(), "professorListSorted", model.asMap());
+    }
+
+    @GetMapping("list/sort/{offset}")
+    @ResponseStatus(HttpStatus.OK)
+    String sortOffset(Model model, @RequestParam("filter") int filter, @RequestParam("department") String department, @PathVariable int offset) throws IOException {
+        model.addAttribute("professorList", professorService.getAllProfessorsSortedOffset(filter, department, offset));
+        model.addAttribute("offset", offset + 20);
+        model.addAttribute("filter", filter);
+        model.addAttribute("department", department);
+
+        return render(new StringWriter(), "professorListSorted", model.asMap());
     }
 
     @GetMapping("/form")

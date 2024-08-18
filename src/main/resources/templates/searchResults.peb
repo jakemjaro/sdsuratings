@@ -1,12 +1,6 @@
-<div class="search-results-container">
-{% if matches is not empty %}
-    {% for professor in matches %}
+{% for professor in matches %}
     {% include "professorCard" %}
-    {% endfor %}
-{% else %}
-    <div class="no-professors-message">
-        <div>No professors found.</div>
-        <span hx-get="/professor/list" hx-target=".main-container" hx-push-url="true">Add a professor?</span>
-    </div>
+{% endfor %}
+{% if matches is not empty %}
+<div class="load-more-content" hx-get="/search/results/{{ offset }}" hx-trigger="intersect once" hx-swap="outerHTML" hx-vals='{"query": "{{ query }}"}'></div>
 {% endif %}
-</div>

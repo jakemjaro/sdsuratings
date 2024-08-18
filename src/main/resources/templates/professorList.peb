@@ -1,3 +1,6 @@
 {% for professor in professorList %}
     {% include "professorCard" %}
 {% endfor %}
+{% if professorList is not empty %}
+<div class="load-more-content" hx-get="/professor/list/{{ offset }}" hx-trigger="intersect once" hx-swap="outerHTML"></div>
+{% endif %}

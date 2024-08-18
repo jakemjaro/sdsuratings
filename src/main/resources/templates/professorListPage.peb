@@ -4,7 +4,7 @@
     </div>
     <form class="professor-list-sort-form" hx-get="/professor/list/sort" hx-target=".list-of-professors">
         <label for="filter">Sort By: </label>
-        <select name="filter" id="filter">
+        <select name="filter" id="sort-filter">
             <option value="1">First Name (A-Z)</option>
             <option value="2" selected>Last Name (A-Z)</option>
             <option value="3">First Name (Z-A)</option>

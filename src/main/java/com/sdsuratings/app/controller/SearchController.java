@@ -64,15 +64,32 @@ public class SearchController {
     String searchResults(Model model, HttpServletRequest request, @RequestParam("query") String query) throws IOException {
         List<Professor> matches = Collections.emptyList();
         if (!query.isBlank()) {
-            matches = professorService.searchProfessors(query);
+            matches = professorService.searchProfessorsOffset(query, 0);
         }
 
         model.addAttribute("matches", matches);
+        model.addAttribute("offset", 20);
+        model.addAttribute("query", query);
 
         if (request.getHeader("HX-request") != null) {
-            return render(new StringWriter(), "searchResults", model.asMap());
+            return render(new StringWriter(), "searchResultsPage", model.asMap());
         } else {
-            return render(new StringWriter(), "fullSearchResults", model.asMap());
+            return render(new StringWriter(), "fullSearchResultsPage", model.asMap());
         }
+    }
+
+    @GetMapping("/results/{offset}")
+    @ResponseStatus(HttpStatus.OK)
+    String resultsOffset(Model model, @RequestParam("query") String query, @PathVariable int offset) throws IOException {
+        List<Professor> matches = Collections.emptyList();
+        if (!query.isBlank()) {
+            matches = professorService.searchProfessorsOffset(query, offset);
+        }
+
+        model.addAttribute("matches", matches);
+        model.addAttribute("offset", offset + 20);
+        model.addAttribute("query", query);
+
+        return render(new StringWriter(), "searchResults", model.asMap());
     }
 }
