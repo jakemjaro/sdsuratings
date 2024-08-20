@@ -63,45 +63,67 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     @Override
     public List<Professor> findByNameContainsLimited(String sequence, int limit) {
         sequence = sequence.trim();
-
         String[] splitArray = {};
-        String sqlQuery = "";
 
         if (sequence.contains("\s")) {
             splitArray = sequence.split("\s+");
         }
 
+        List<Professor> professorList = Collections.emptyList();
+
         if (splitArray.length >= 2) {
-            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%') ORDER BY last_name ASC LIMIT " + limit;
+            String sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE ? OR last_name ILIKE ?) AND (first_name ILIKE ? OR last_name ILIKE ?) ORDER BY last_name ASC LIMIT ?";
+            String firstSequence = "%" + splitArray[0] + "%";
+            String secondSequence = "%" + splitArray[1] + "%";
+
+            professorList = jdbcClient.sql(sqlQuery)
+                    .params(firstSequence, firstSequence, secondSequence, secondSequence, limit)
+                    .query(Professor.class)
+                    .list();
         } else {
-            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' ORDER BY last_name ASC LIMIT " + limit;
+            String sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE ? OR last_name ILIKE ? ORDER BY last_name ASC LIMIT ?";
+            sequence = "%" + sequence + "%";
+
+            professorList = jdbcClient.sql(sqlQuery)
+                    .params(sequence, sequence, limit)
+                    .query(Professor.class)
+                    .list();
         }
 
-        return jdbcClient.sql(sqlQuery)
-                .query(Professor.class)
-                .list();
+        return professorList;
     }
 
     @Override
     public List<Professor> findAllByNameContains(String sequence) {
         sequence = sequence.trim();
-
         String[] splitArray = {};
-        String sqlQuery = "";
 
         if (sequence.contains("\s")) {
             splitArray = sequence.split("\s+");
         }
 
+        List<Professor> professorList = Collections.emptyList();
+
         if (splitArray.length >= 2) {
-            sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE '%" + splitArray[0] + "%' OR last_name ILIKE '%" + splitArray[0] + "%') AND (first_name ILIKE '%" + splitArray[1] + "%' OR last_name ILIKE '%" + splitArray[1] + "%') ORDER BY last_name ASC";
+            String sqlQuery = "SELECT * FROM professors WHERE (first_name ILIKE ? OR last_name ILIKE ?) AND (first_name ILIKE ? OR last_name ILIKE ?) ORDER BY last_name ASC";
+            String firstSequence = "%" + splitArray[0] + "%";
+            String secondSequence = "%" + splitArray[1] + "%";
+
+             professorList = jdbcClient.sql(sqlQuery)
+                    .params(firstSequence, firstSequence, secondSequence, secondSequence)
+                    .query(Professor.class)
+                    .list();
         } else {
-            sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE '%" + sequence + "%' OR last_name ILIKE '%" + sequence + "%' ORDER BY last_name ASC";
+            String sqlQuery = "SELECT * FROM professors WHERE first_name ILIKE ? OR last_name ILIKE ? ORDER BY last_name ASC";
+            sequence = "%" + sequence + "%";
+
+            professorList = jdbcClient.sql(sqlQuery)
+                    .params(sequence, sequence)
+                    .query(Professor.class)
+                    .list();
         }
 
-        return jdbcClient.sql(sqlQuery)
-                .query(Professor.class)
-                .list();
+        return professorList;
     }
 
     @Override
