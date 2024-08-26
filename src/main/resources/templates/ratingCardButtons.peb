@@ -1,0 +1,2 @@
+<i class='bx bxs-trash' hx-delete="/ratings/{{ rating.id }}" hx-target=".main-container"></i>
+<i class='bx bxs-pencil' hx-get="/ratings/edit-form/{{ rating.id }}" hx-target="body" hx-swap="beforeend"></i>
