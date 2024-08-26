@@ -47,7 +47,7 @@ public class SearchController {
         return writer.toString();
     }
 
-    @GetMapping("/suggestion")
+    @GetMapping("/suggestions")
     @ResponseStatus(HttpStatus.OK)
     String searchSuggestion(Model model, @RequestParam("query") String query) throws IOException {
         if (query.isBlank()) {

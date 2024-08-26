@@ -1,5 +1,5 @@
 <div class="rating-form-container">
-    <form class="rating-form" hx-post="/rating/add/{{ professorId }}" hx-target=".main-container" onsubmit="removeRatingFormDelayed()">
+    <form class="rating-form" hx-post="/ratings/{{ professorId }}" hx-target=".main-container" onsubmit="removeRatingFormDelayed()">
         <div class="rating-form-header">
             <h2>Add a Rating</h2>
         </div>

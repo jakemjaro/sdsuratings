@@ -2,5 +2,5 @@
     {% include "ratingCard" %}
 {% endfor %}
 {% if ratingList is not empty %}
-<div class="load-more-content" hx-get="/rating/filter/{{ professorId }}/{{ offset }}" hx-trigger="intersect once" hx-swap="outerHTML" hx-vals='{"course": "{{ course }}"}'></div>
+<div class="load-more-content" hx-get="/ratings/filter/{{ professorId }}/{{ offset }}" hx-trigger="intersect once" hx-swap="outerHTML" hx-vals='{"course": "{{ course }}"}'></div>
 {% endif %}

@@ -1,4 +1,4 @@
-<form class="add-professor-form" hx-post="/professor/add" hx-swap="outerHTML">
+<form class="add-professor-form" hx-post="/professors" hx-swap="outerHTML">
     <div class="add-professor-form-fields">
         <input type="text" name="first-name" placeholder="First Name" autocomplete="off" required>
         <input type="text" name="last-name" placeholder="Last Name" autocomplete="off" required>
@@ -126,7 +126,7 @@
         </select>
     </div>
     <div class="add-professor-form-buttons">
-        <button id="add-professor-form-cancel" hx-get="/professor/button" hx-target=".add-professor-form" hx-swap="outerHTML">Cancel</button>
+        <button id="add-professor-form-cancel" hx-get="/professors/add-button" hx-target=".add-professor-form" hx-swap="outerHTML">Cancel</button>
         <button type="submit" id="add-professor-form-submit">Submit</button>
     </div>
 </form>

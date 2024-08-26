@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/rating")
+@RequestMapping("/ratings")
 public class RatingController {
 
     private final PebbleEngine pebbleEngine;
@@ -66,7 +66,7 @@ public class RatingController {
         model.addAttribute("professorId", id);
     }
 
-    @GetMapping("/form/{professorId}")
+    @GetMapping("/add-form/{professorId}")
     @ResponseStatus(HttpStatus.OK)
     String form(Model model, @PathVariable int professorId) throws IOException {
         model.addAttribute("professorId", professorId);
@@ -74,7 +74,7 @@ public class RatingController {
         return render(new StringWriter(), "ratingForm", model.asMap());
     }
 
-    @PostMapping("/add/{professorId}")
+    @PostMapping("/{professorId}")
     @ResponseStatus(HttpStatus.CREATED)
     String add(Model model, @PathVariable int professorId, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
                @RequestParam("course-dept") String courseDept, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,
@@ -89,7 +89,7 @@ public class RatingController {
         return render(new StringWriter(), "professorPage", model.asMap());
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     String delete(Model model, @PathVariable int id) throws IOException {
         int professorId = ratingService.getRating(id).getProfessorId();
@@ -101,7 +101,7 @@ public class RatingController {
         return render(new StringWriter(), "professorPage", model.asMap());
     }
 
-    @GetMapping("/edit/form/{id}")
+    @GetMapping("/edit-form/{id}")
     @ResponseStatus(HttpStatus.OK)
     String editForm(Model model, @PathVariable int id) throws IOException {
         model.addAttribute("rating", ratingService.getRating(id));
@@ -109,7 +109,7 @@ public class RatingController {
         return render(new StringWriter(), "ratingEditForm", model.asMap());
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     String edit(Model model, @PathVariable int id, @RequestParam("quality") double quality, @RequestParam("difficulty") double difficulty,
                 @RequestParam("course-dept") String courseDept, @RequestParam("course-number") String courseNumber, @RequestParam("grade") String grade,

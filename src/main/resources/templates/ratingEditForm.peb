@@ -1,5 +1,5 @@
 <div class="rating-form-container">
-    <form class="rating-form" hx-put="/rating/edit/{{ rating.id }}" hx-target=".main-container">
+    <form class="rating-form" hx-put="/ratings/{{ rating.id }}" hx-target=".main-container">
         <div class="rating-form-header">
             <h2>Edit Rating</h2>
         </div>

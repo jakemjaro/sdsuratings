@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/professor")
+@RequestMapping("/professors")
 public class ProfessorController {
     private final PebbleEngine pebbleEngine;
     private ProfessorService professorService;
@@ -64,7 +64,7 @@ public class ProfessorController {
         model.addAttribute("professorId", id);
     }
 
-    @GetMapping("/profile/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     String profile(Model model, @PathVariable("id") int id, HttpServletRequest request) throws IOException {
         loadProfessorPageData(model, id);
@@ -76,7 +76,7 @@ public class ProfessorController {
         }
     }
 
-    @GetMapping("/list")
+    @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     String list(Model model, HttpServletRequest request) throws IOException {
         model.addAttribute("professorList", professorService.getAllProfessorsOffset(0));
@@ -89,7 +89,7 @@ public class ProfessorController {
         }
     }
 
-    @GetMapping("/list/{offset}")
+    @GetMapping("/partial/{offset}")
     @ResponseStatus(HttpStatus.OK)
     String listOffset(Model model, @PathVariable int offset) throws IOException {
         model.addAttribute("professorList", professorService.getAllProfessorsOffset(offset));
@@ -98,7 +98,7 @@ public class ProfessorController {
         return render(new StringWriter(), "professorList", model.asMap());
     }
 
-    @GetMapping("/list/sort")
+    @GetMapping("/sort")
     @ResponseStatus(HttpStatus.OK)
     String sort(Model model, @RequestParam("filter") int filter, @RequestParam("department") String department) throws IOException {
         model.addAttribute("professorList", professorService.getAllProfessorsSortedOffset(filter, department, 0));
@@ -109,7 +109,7 @@ public class ProfessorController {
         return render(new StringWriter(), "professorListSorted", model.asMap());
     }
 
-    @GetMapping("list/sort/{offset}")
+    @GetMapping("/sort/{offset}")
     @ResponseStatus(HttpStatus.OK)
     String sortOffset(Model model, @RequestParam("filter") int filter, @RequestParam("department") String department, @PathVariable int offset) throws IOException {
         model.addAttribute("professorList", professorService.getAllProfessorsSortedOffset(filter, department, offset));
@@ -120,19 +120,19 @@ public class ProfessorController {
         return render(new StringWriter(), "professorListSorted", model.asMap());
     }
 
-    @GetMapping("/form")
+    @GetMapping("/add-form")
     @ResponseStatus(HttpStatus.OK)
     String form() throws IOException {
         return render(new StringWriter(), "addProfessorForm");
     }
 
-    @GetMapping("/button")
+    @GetMapping("/add-button")
     @ResponseStatus(HttpStatus.OK)
     String button() throws IOException {
         return render(new StringWriter(), "addProfessorButton");
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     String add(Model model, @RequestParam("first-name") String firstName, @RequestParam("last-name") String lastName, @RequestParam("department") String department) throws IOException {
         String firstLetterFN = firstName.substring(0,1).toUpperCase();

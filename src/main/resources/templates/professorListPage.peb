@@ -2,7 +2,7 @@
     <div class="professor-list-add-container">
         {% include "addProfessorButton" %}
     </div>
-    <form class="professor-list-sort-form" hx-get="/professor/list/sort" hx-target=".list-of-professors">
+    <form class="professor-list-sort-form" hx-get="/professors/sort" hx-target=".list-of-professors">
         <label for="filter">Sort By: </label>
         <select name="filter" id="sort-filter">
             <option value="1">First Name (A-Z)</option>

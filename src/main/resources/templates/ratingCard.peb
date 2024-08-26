@@ -5,8 +5,8 @@
     <div class="rating-card-right">
         <div class="rating-card-functions">
             <div class="rating-card-edit-delete">
-                <i class='bx bxs-trash' hx-delete="/rating/delete/{{ rating.id }}" hx-target=".main-container"></i>
-                <i class='bx bxs-pencil' hx-get="/rating/edit/form/{{ rating.id }}" hx-target="body" hx-swap="beforeend"></i>
+                <i class='bx bxs-trash' hx-delete="/ratings/{{ rating.id }}" hx-target=".main-container"></i>
+                <i class='bx bxs-pencil' hx-get="/ratings/edit-form/{{ rating.id }}" hx-target="body" hx-swap="beforeend"></i>
             </div>
             <div class="rating-card-date">{{ rating.getFormattedDate() }}</div>
         </div>
