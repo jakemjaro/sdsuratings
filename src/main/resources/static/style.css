@@ -184,6 +184,7 @@ nav {
     color: white;
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
 }
 
 .professor-list-sort-form {
@@ -220,6 +221,7 @@ nav {
     justify-content: center;
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
 }
 
 .professor-list-sort-form button:hover,
@@ -280,6 +282,7 @@ nav {
     height: 1.75rem;
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
 }
 
 #add-professor-form-cancel {
@@ -345,6 +348,7 @@ h1 span {
     height: max-content;
     border: 3px solid var(--main-red);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 0.5rem;
 }
 
 .professor-card:hover {
@@ -428,7 +432,7 @@ h1 span {
     color: black;
     background-color: white;
     border: 5px solid var(--main-red);
-/*    border-radius: 1rem;*/
+    border-radius: 0.75rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
@@ -476,6 +480,7 @@ h1 span {
     border: none;
     transition: transform 0.2s ease-out;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
 }
 
 .add-rating-button:hover,
@@ -513,6 +518,7 @@ h1 span {
     background-color: black;
     color: white;
     border: none;
+    transition: background-color 0.2s ease;
 }
 
 .professor-page-right-ratings {
@@ -528,7 +534,7 @@ h1 span {
     width: 100%;
     height: auto;
     outline: 3px solid black;
-/*    border-radius: 0.75rem;*/
+    border-radius: 0.5rem;
     display: flex;
     color: black;
     background-color: white;
@@ -548,13 +554,13 @@ h1 span {
     border-right: 2px solid black;
     font-size: 2rem;
     font-weight: 800;
-/*    border-radius: 0.75rem 0 0 0.75rem;*/
+    border-radius: 0.5rem 0 0 0.5rem;
 }
 
 .rating-card-right {
     flex-grow: 1;
     height: auto;
-/*    border-radius: 0 0.75rem 0.75rem 0;*/
+    border-radius: 0 0.5rem 0.5rem 0;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -613,6 +619,7 @@ h1 span {
     background-color: white;
     padding: 0.5rem 1rem;
     border: 4px solid var(--main-red);
+    border-radius: 0.75rem;
 }
 
 .rating-form-header {
@@ -687,6 +694,7 @@ h1 span {
 
 .rating-form-cancel {
     background-color: black;
+    transition: background-color 0.2s ease;
 }
 
 .rating-form-cancel:hover {
@@ -696,6 +704,7 @@ h1 span {
 
 .rating-form-submit {
     background-color: var(--main-red);
+    transition: background-color 0.2s ease;
 }
 
 .rating-form-submit:hover {
