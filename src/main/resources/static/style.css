@@ -839,9 +839,9 @@ nav {
 @media screen and (max-width: 750px) {
     nav {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 80px 80px;
-        height: 160px;
-        min-height: 160px;
+        grid-template-rows: 80px 60px;
+        height: 140px;
+        min-height: 140px;
     }
 
     .logo-container {
@@ -858,6 +858,7 @@ nav {
         width: 96%;
         grid-column: 1 / 3;
         grid-row: 2 / 3;
+        align-self: flex-start;
     }
 
     .all-professors {
