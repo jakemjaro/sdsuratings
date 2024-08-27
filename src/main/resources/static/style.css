@@ -168,6 +168,7 @@ nav {
 
 .professor-list-add-container {
     width: 500px;
+    max-width: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -189,6 +190,7 @@ nav {
 
 .professor-list-sort-form {
     width: 500px;
+    max-width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,7 +239,7 @@ nav {
 }
 
 .list-of-professors {
-    width: max-content;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -322,17 +324,17 @@ nav {
     gap: 0.5rem;
 }
 
-h1 {
-    font-size: 8rem;
+.welcome-message h1 {
+    font-size: 8em;
     text-align: center;
 }
 
-h1 span {
+.welcome-message h1 span {
     color: var(--main-red);
 }
 
 .welcome-message h2 {
-    font-size: 1.7rem;
+    font-size: 1.7em;
     text-align: center;
 }
 
@@ -345,6 +347,7 @@ h1 span {
 
 .professor-card {
     width: 500px;
+    max-width: 95%;
     height: max-content;
     border: 3px solid var(--main-red);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -503,7 +506,6 @@ h1 span {
 
 .professor-page-sort-form {
     width: 95%;
-    min-width: 650px;
     height: auto;
     display: flex;
     align-items: center;
@@ -523,7 +525,6 @@ h1 span {
 
 .professor-page-right-ratings {
     width: 95%;
-    min-width: 650px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -616,6 +617,8 @@ h1 span {
     max-width: 95%;
     min-width: 350px;
     height: auto;
+    max-height: 95%;
+    overflow-y: auto;
     background-color: white;
     padding: 0.5rem 1rem;
     border: 4px solid var(--main-red);
@@ -689,7 +692,6 @@ h1 span {
     border: none;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
-
 }
 
 .rating-form-cancel {
@@ -761,10 +763,6 @@ h1 span {
 }
 
 
-
-
-
-
 @media screen and (max-width: 1100px) {
     .professor-page-container {
         overflow-y: auto;
@@ -819,5 +817,152 @@ h1 span {
 
     .hidden-cushion {
         display: block;
+    }
+
+    .welcome-message {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .welcome-message {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .welcome-message {
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    nav {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 80px 80px;
+        height: 160px;
+        min-height: 160px;
+    }
+
+    .logo-container {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        justify-content: flex-start;
+    }
+
+    .logo-container #logo {
+        width: 118px;
+    }
+
+    #search-form {
+        width: 96%;
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+    }
+
+    .all-professors {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        margin: 0 1rem 0 auto;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .welcome-message {
+        font-size: 0.6rem;
+    }
+
+    .professor-nameplate {
+        width: 95%;
+        flex-direction: column;
+        padding: 3rem 1rem;
+    }
+
+    .professor-nameplate h2 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .welcome-message {
+        font-size: 0.5rem;
+    }
+
+    .professor-list-sort-form {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .professor-list-sort-form label {
+        width: 100%;
+    }
+
+    .professor-card {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .professor-card-title {
+        height: auto;
+        min-height: 0;
+        width: 100%;
+    }
+
+    .professor-card-info {
+        height: auto;
+        min-height: 0;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .add-professor-form-fields {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .add-professor-form-fields input,
+    .add-professor-form-fields select {
+        width: 80%;
+        min-width: 245px;
+    }
+
+    .professor-list-sort-form select,
+    .professor-list-sort-form button {
+        width: 60%;
+        min-width: 165px;
+    }
+
+    .rating-card {
+        flex-direction: column;
+    }
+
+    .rating-card-left {
+        width: 100%;
+        max-width: 100%;
+        height: 60px;
+        min-height: 0;
+        border-radius: 0.5rem 0.5rem 0 0;
+        border-right: none;
+        border-bottom: 2px solid black;
+    }
+
+    .rating-card-right {
+        width: 100%;
+        border-radius: 0 0 0.5rem 0.5rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .welcome-message {
+        font-size: 0.4rem;
+    }
+
+    .welcome-message h2 {
+        font-size: 2em;
+    }
+
+    #search-form {
+        min-width: 0;
     }
 }
