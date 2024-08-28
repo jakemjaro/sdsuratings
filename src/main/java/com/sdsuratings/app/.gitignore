@@ -1,0 +1,6 @@
+*
+!/controller/*
+!/model/*
+!/resources/static/*
+!/resources/templates/*
+!/util/*
