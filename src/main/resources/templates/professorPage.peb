@@ -8,7 +8,7 @@
                     <span class="professor-nameplate-rating"><strong>Quality:</strong>&nbsp; {{ professor.averageQuality }} / 5</span>
                     <span class="professor-nameplate-difficulty"><strong>Difficulty:</strong>&nbsp; {{ professor.averageDifficulty }} / 5</span>
                 </div>
-                <button type="button" class="add-rating-button" hx-get="/ratings/add-form/{{ professor.id }}" hx-target="body" hx-swap="beforeend">
+                <button type="button" class="add-rating-button" hx-get="/ratings/add-form/{{ professor.id }}" hx-target="body" hx-swap="beforeend" hx-indicator="#indy">
                     Add a rating
                 </button>
             </div>
@@ -17,7 +17,7 @@
 
     <div class="professor-page-right">
     {% if ratingList is not empty %}
-        <form class="professor-page-sort-form" hx-get="/ratings/filter/{{ professor.id }}" hx-target=".professor-page-right-ratings">
+        <form class="professor-page-sort-form" hx-get="/ratings/filter/{{ professor.id }}" hx-target=".professor-page-right-ratings" hx-indicator="#indy">
             <select name="course" id="professor-page-sort-select">
                 <option value="all">All Courses</option>
             {% for course in courseList %}

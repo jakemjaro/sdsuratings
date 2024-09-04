@@ -3,5 +3,5 @@
 {% endfor %}
 {% if professorList is not empty %}
 <div class="load-more-content" hx-get="/professors/sort/{{ offset }}" hx-trigger="intersect once" hx-swap="outerHTML"
-     hx-vals='{"filter": "{{ filter }}", "department": "{{ department }}"}'></div>
+     hx-vals='{"filter": "{{ filter }}", "department": "{{ department }}"}' hx-indicator="#indy"></div>
 {% endif %}
